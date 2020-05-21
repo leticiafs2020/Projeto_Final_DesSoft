@@ -43,6 +43,13 @@ class Game:
     def update(self):
 
     def eventos(self):
+        # eventos do loop
+        for event in pygame.event.get():
+            # checa se a janela do jogo foi fechada
+            if event.type == pygame.QUIT:
+                if self.playing:
+                    self.playing= False
+                self.running = False
 
     def game_over(self):
 
