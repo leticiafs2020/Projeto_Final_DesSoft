@@ -127,6 +127,7 @@ class Game:
         self.draw_text("Aperte qualquer tecla para jogar!", 22, branco, WIDTH/2, HEIGHT*3/4)
         self.draw_text('Sua pontuação máxima é: ' + str(self.highscore), 22, branco, WIDTH/2 , 15)
         pygame.display.flip()
+        self.espera_para_comecar()
 
     def draw(self):
         #Desenhos do loop:
@@ -206,6 +207,15 @@ class Game:
         self.draw_text("Game Over", 48, branco, WIDTH/2, HEIGHT/4)
         self.draw_text("Pontuação: " + str(self.score), 22, branco, WIDTH/2, HEIGHT/2)
         self.draw_text("Aperte qualquer tecla para jogar denovo!", 22, branco, WIDTH/2, HEIGHT*3/4)
+        if self.score > self.highscore:
+            self.highscore = self.score
+            self.draw_text('Nova pontuação máxima: ', 22, branco, WIDTH/2, HEIGHT/2 + 40)
+            with open(path.join(self.dir, pontuacao_maxima), 'w') as f:
+                f.write(str(self.score))
+        else:
+            self.draw_text('Sua pontuação máxima é: ' + str(self.highscore), 22, branco, WIDTH/2, HEIGHT/2 + 40)
+        pygame.display.flip()
+        self.espera_para_comecar()
    
     def espera_para_comecar(self):
         waiting= True
