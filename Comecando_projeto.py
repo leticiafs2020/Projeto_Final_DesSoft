@@ -39,6 +39,13 @@ class Game:
     def draw(self):
 
     def run(self):
+        #Loop do jogo:
+        self.playing= True
+        while self.playing:
+            self.clock.tick(FPS)
+            self.eventos()
+            self.update()
+            self.draw()
     
     def update(self):
 
