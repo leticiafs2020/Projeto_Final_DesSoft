@@ -27,6 +27,11 @@ titulo= 'E.t de volta para casa'
 nome_fonte= 'arial'
 pontuacao_maxima= "pontuacao_maxima.txt"
 
+# plataformas iniciais 
+l_plataformas= [(0, HEIGHT-40, WIDTH, 40), (175, 100, 50, 20),
+(WIDTH / 2 - 50, HEIGHT * 3 /4, 100, 20),
+(350, 200, 100, 20), (125, HEIGHT - 350, 100, 20)] 
+
 vet= pygame.math.Vector2 # é usado o vetor para o movimento 
 
 class Player(pygame.sprite.Sprite):
