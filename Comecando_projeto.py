@@ -51,8 +51,8 @@ class Player(pygame.sprite.Sprite):
     def __init__(self, game):
         pygame.sprite.Sprite.__init__(self)
         self.game= game
-        self.image= pygame.Surface((30,40))
-        self.image.fill(amarelo)
+        self.image= self.game.spritesheet.get_image(260, 1032, 128, 256)
+        self.image.set_colorkey(preto)
         self.rect= self.image.get_rect()
         self.rect.center= (WIDTH / 2, HEIGHT / 2)
         self.pos= vet(WIDTH / 2, HEIGHT / 2) #posição
