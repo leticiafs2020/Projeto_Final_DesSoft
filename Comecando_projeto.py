@@ -206,7 +206,17 @@ class Game:
         self.draw_text("Game Over", 48, branco, WIDTH/2, HEIGHT/4)
         self.draw_text("Pontuação: " + str(self.score), 22, branco, WIDTH/2, HEIGHT/2)
         self.draw_text("Aperte qualquer tecla para jogar denovo!", 22, branco, WIDTH/2, HEIGHT*3/4)
-
+   
+    def espera_para_comecar(self):
+        waiting= True
+        while waiting:
+            self.clock.tick(FPS)
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    waiting= False
+                    self.running= False 
+                if event.type == pygame.KEYUP:
+                    waiting= False 
 
 g = Game()
 g.tela_inicio()
