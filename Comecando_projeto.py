@@ -2,6 +2,7 @@
 import pygame
 import random
 from os import path
+#
  
 # definindo as cores
 branco= (255, 255, 255)
