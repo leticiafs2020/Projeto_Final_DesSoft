@@ -40,6 +40,10 @@ class Game:
     def tela_inicio(self): 
 
     def draw(self):
+        #Desenhos do loop:
+        self.screen.fill(fundo)
+        self.all_sprites.draw(self.screen)
+        pygame.display.flip()
 
     def run(self):
         #Loop do jogo:
