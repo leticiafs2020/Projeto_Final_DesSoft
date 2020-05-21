@@ -53,4 +53,13 @@ class Game:
 
     def game_over(self):
 
+g = Game()
+g.tela_inicio()
+while g.running:
+    g.novo_jogo()
+    g.game_over()
+ 
+pygame.quit()
+
+
     
