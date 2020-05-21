@@ -111,13 +111,14 @@ class Game:
         self.load_data()
 
     def load_data(self):
-        #salva a pontuação máxima
-        self.dir= path.dirname(__file__)
-        with open(path.join(self.dir, pontuacao_maxima), 'w') as f :
+        self.dir = path.dirname(__file__)
+        imagem_dir = path.join(self.dir, 'imagem')
+        with open(path.join(self.dir, pontuacao_maxima), 'w')as f:
             try:
-                self.highscore= int(f.read())
+                self.highscore = int(f.read())
             except:
-                self.highscore= 0     
+                self.highscore = 0    
+       self.spritesheet=Spritesheet(path.join(imagem_dir,sprite_sheet))     
 
     def novo_jogo(self):
         # para começar um novo jogo
