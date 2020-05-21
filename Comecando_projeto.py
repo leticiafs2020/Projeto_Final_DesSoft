@@ -95,6 +95,16 @@ class Game:
         self.clock= pygame.time.Clock()
         self.running= True
         self.font_name= pygame.font.match_font(nome_fonte)
+        self.load_data()
+
+    def load_data(self):
+        #salva a pontuação máxima
+        self.dir= path.dirname(__file__)
+        with open(path.join(self.dir, pontuacao_maxima), 'w') as f :
+            try:
+                self.highscore= int(f.read())
+            except:
+                self.highscore= 0     
 
     def novo_jogo(self):
         # para começar um novo jogo
@@ -167,7 +177,7 @@ class Game:
         if len(self.platforms) == 0:
             self.playing= False
 
-         #Cria novas plataformas sem ultrapassar uma quantidade de 5 plataformas
+        #Cria novas plataformas sem ultrapassar uma quantidade de 5 plataformas
         while len(self.platforms) < 6:
             width= random.randrange(50, 100)
             p= Plataforma(random.randrange(0, WIDTH-width),
