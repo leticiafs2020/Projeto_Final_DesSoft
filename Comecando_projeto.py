@@ -96,7 +96,14 @@ class Game:
         self.all_sprites= pygame.sprite.Group()
         self.run()
 
-    def tela_inicio(self): 
+    def tela_inicio(self):  
+        # tela inicial do jogo
+        self.screen.fill(fundo)
+        self.draw_text(titulo, 48, branco, WIDTH/2, HEIGHT/4)
+        self.draw_text("Use o espaço para pular e as setas para andar", 22, branco, WIDTH/2, HEIGHT/2)
+        self.draw_text("Aperte qualquer tecla para jogar!", 22, branco, WIDTH/2, HEIGHT*3/4)
+        self.draw_text('Sua pontuação máxima é: ' + str(self.highscore), 22, branco, WIDTH/2 , 15)
+        pygame.display.flip()
 
     def draw(self):
         #Desenhos do loop:
