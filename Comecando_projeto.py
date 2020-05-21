@@ -118,7 +118,7 @@ class Game:
                 self.highscore = int(f.read())
             except:
                 self.highscore = 0    
-       self.spritesheet=Spritesheet(path.join(imagem_dir,sprite_sheet))     
+        self.spritesheet=Spritesheet(path.join(imagem_dir,sprite_sheet))     
 
     def novo_jogo(self):
         # para começar um novo jogo
