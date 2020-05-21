@@ -20,3 +20,14 @@ FPS= 60
 titulo= 'E.t de volta para casa'
 nome_fonte= 'arial'
 pontuacao_maxima= "highscore.txt"
+
+class Game:
+    def __init__(self):
+        #iniciando a janela do jogo
+        pygame.init()
+        pygame.mixer.init()
+        self.screen= pygame.display.set_mode((WIDTH, HEIGHT))
+        pg.display.set_caption(titulo)
+        self.clock= pygame.time.Clock()
+        self.running= True
+        self.font_name= pygame.font.match_font(nome_fonte)
