@@ -34,6 +34,14 @@ class Player(pygame.sprite.Sprite):
         self.pos= vet(WIDTH / 2, HEIGHT / 2) #posição
         self.vel= vet(0, 0)  #velocidade
         self.acc= vet(0, 0)  #aceleração
+    
+    def pular(self):
+        #só pula se tiver em alguma plataforma
+        self.rect.x += 1
+        colisao= pygame.sprite.spritecollide(self, self.game.platforms, False)
+        self.rect.x -= 1 #não é visível isso, mas necessário
+        if colisao:
+            self.vel.y = -pulo
 
 class Game:
     def __init__(self):
