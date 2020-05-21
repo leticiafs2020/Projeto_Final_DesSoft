@@ -48,6 +48,28 @@ class Player(pygame.sprite.Sprite):
         self.rect.x -= 1 #não é visível isso, mas necessário
         if colisao:
             self.vel.y = -pulo
+    
+    def update(self):
+        self.acc= vet(0, jogador_gravidade)
+        keys= pygame.key.get_pressed()
+        if keys[pygame.K_LEFT]:
+            self.acc.x= -jogador_aceleracao
+        if keys[pygame.K_RIGHT]:
+            self.acc.x= jogador_aceleracao
+ 
+        #Aplicando atrito para o jogador não ir muito rápido:
+        self.acc.x += self.vel.x * jogador_atrito
+        #Equações para o movimento:
+        self.vel += self.acc
+        self.pos += self.vel + 0.5*self.acc
+        #Para o jogador não sair do quadrado da tela:
+        if self.pos.x > WIDTH:
+            self.pos.x = 0
+        if self.pos.x < 0:
+            self.pos.x = WIDTH
+ 
+        self.rect.midbottom = self.pos
+
 
 class Plataforma(pygame.sprite.Sprite):
     def __init__(self, x, y, w, h): # coordenadas e altura
