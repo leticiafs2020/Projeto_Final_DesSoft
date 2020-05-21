@@ -131,6 +131,20 @@ class Game:
     def update(self):
         # atualização do loop
         self.all_sprites.update()
+        #Checa se o jogador bateu na plataforma, só se estiver caindo:
+        if self.player.vel.y > 0:
+            colisao= pygame.sprite.spritecollide(self.player, self.platforms, False)
+            if colisao:
+                self.player.pos.y = colisao[0].rect.top
+                self.player.vel.y = 0
+        #Se o jogador alcanca 1/4 do topo da tela:
+        if self.player.rect.top <= HEIGHT / 4:
+            self.player.pos.y += abs(self.player.vel.y)
+            for plat in self.platforms:
+                plat.rect.y += abs(self.player.vel.y)
+                if plat.rect.top >= HEIGHT:
+                    plat.kill()
+                    self.score += 10
 
     def eventos(self):
         # eventos do loop
