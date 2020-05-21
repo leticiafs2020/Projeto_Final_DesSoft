@@ -33,6 +33,9 @@ class Game:
         self.font_name= pygame.font.match_font(nome_fonte)
 
     def novo_jogo(self):
+        # para começar um novo jogo
+        self.all_sprites= pygame.sprite.Group()
+        self.run()
 
     def tela_inicio(self): 
 
