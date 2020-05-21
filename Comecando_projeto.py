@@ -103,6 +103,10 @@ class Game:
         self.platforms= pygame.sprite.Group()
         self.player= Player(self)
         self.all_sprites.add(self.player)
+        for plat in l_plataformas:
+            p= Plataforma(*plat) #explora a lista de plataformas
+            self.all_sprites.add(p)
+            self.platforms.add(p)
         self.run()
 
     def tela_inicio(self):  
