@@ -48,6 +48,8 @@ class Game:
             self.draw()
     
     def update(self):
+        # atualização do loop
+        self.all_sprites.update()
 
     def eventos(self):
         # eventos do loop
