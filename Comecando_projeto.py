@@ -1,8 +1,6 @@
 #Importando as bibliotecas necessárias:
 import pygame
 import random
-from settings import *
-from sprites import *
 from os import path
  
 # definindo as cores
