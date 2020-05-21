@@ -26,6 +26,7 @@ FPS= 60
 titulo= 'E.t de volta para casa'
 nome_fonte= 'arial'
 pontuacao_maxima= "pontuacao_maxima.txt"
+sprite_sheet = "spritesheet_complete.png"
 
 # plataformas iniciais 
 l_plataformas= [(0, HEIGHT-40, WIDTH, 40), (175, 100, 50, 20),
@@ -33,6 +34,18 @@ l_plataformas= [(0, HEIGHT-40, WIDTH, 40), (175, 100, 50, 20),
 (350, 200, 100, 20), (125, HEIGHT - 350, 100, 20)] 
 
 vet= pygame.math.Vector2 # é usado o vetor para o movimento 
+
+class Spritesheet:
+   #Classe para carregar as Spritesheets
+   def __init__(self, filename):
+       self.spritesheet = pygame.image.load(filename).convert()
+ 
+   def get_image(self, x, y, width, height):
+       #pegando uma imagem da spritsheet
+       imagem = pygame.Surface((width, height))
+       imagem.blit(self.spritesheet, (0, 0), (x, y, width, height))
+       imagem = pygame.transform.scale(imagem, (width // 2, height // 2))
+       return imagem
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, game):
