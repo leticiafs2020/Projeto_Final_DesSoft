@@ -21,6 +21,8 @@ titulo= 'E.t de volta para casa'
 nome_fonte= 'arial'
 pontuacao_maxima= "highscore.txt"
 
+vet= pygame.math.Vector2 # é usado o vetor para o movimento 
+
 class Player(pygame.sprite.Sprite):
     def __init__(self, game):
         pygame.sprite.Sprite.__init__(self)
