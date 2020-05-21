@@ -44,7 +44,7 @@ class Spritesheet:
        #pegando uma imagem da spritsheet
        imagem = pygame.Surface((width, height))
        imagem.blit(self.spritesheet, (0, 0), (x, y, width, height))
-       imagem = pygame.transform.scale(imagem, (width // 2, height // 2))
+       imagem = pygame.transform.scale(imagem, (width // 3, height // 3))
        return imagem
 
 class Player(pygame.sprite.Sprite):
