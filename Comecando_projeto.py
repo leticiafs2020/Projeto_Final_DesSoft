@@ -49,6 +49,15 @@ class Player(pygame.sprite.Sprite):
         if colisao:
             self.vel.y = -pulo
 
+class Plataforma(pygame.sprite.Sprite):
+    def __init__(self, x, y, w, h): # coordenadas e altura
+        pygame.sprite.Sprite.__init__(self)
+        self.image= pygame.Surface((w, h))
+        self.image.fill(verde)
+        self.rect= self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+
 class Game:
     def __init__(self):
         #iniciando a janela do jogo
