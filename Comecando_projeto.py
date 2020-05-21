@@ -145,6 +145,14 @@ class Game:
                 if plat.rect.top >= HEIGHT:
                     plat.kill()
                     self.score += 10
+        #Game over:
+        if self.player.rect.bottom > HEIGHT: 
+            for sprite in self.all_sprites:
+                sprite.rect.y -= max(self.player.vel.y, 10)
+                if sprite.rect.bottom < 0:
+                    sprite.kill()
+        if len(self.platforms) == 0:
+            self.playing= False
 
     def eventos(self):
         # eventos do loop
