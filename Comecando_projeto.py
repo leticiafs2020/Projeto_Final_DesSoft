@@ -102,7 +102,15 @@ class Game:
         #Desenhos do loop:
         self.screen.fill(fundo)
         self.all_sprites.draw(self.screen)
+        self.draw_text(str(self.score), 22, branco, WIDTH/2, 15)
         pygame.display.flip()
+
+    def draw_text(self, text, size, color, x, y):
+        font= pygame.font.Font(self.font_name, size)
+        text_surface= font.render(text, True, color)
+        text_rect= text_surface.get_rect()
+        text_rect.midtop= (x, y)
+        self.screen.blit(text_surface, text_rect)
 
     def run(self):
         #Loop do jogo:
