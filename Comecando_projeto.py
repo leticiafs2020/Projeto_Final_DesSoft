@@ -93,7 +93,11 @@ class Game:
 
     def novo_jogo(self):
         # para começar um novo jogo
+        self.score= 0
         self.all_sprites= pygame.sprite.Group()
+        self.platforms= pygame.sprite.Group()
+        self.player= Player(self)
+        self.all_sprites.add(self.player)
         self.run()
 
     def tela_inicio(self):  
