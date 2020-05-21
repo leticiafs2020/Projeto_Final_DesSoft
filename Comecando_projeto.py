@@ -21,6 +21,18 @@ titulo= 'E.t de volta para casa'
 nome_fonte= 'arial'
 pontuacao_maxima= "highscore.txt"
 
+class Player(pygame.sprite.Sprite):
+    def __init__(self, game):
+        pygame.sprite.Sprite.__init__(self)
+        self.game= game
+        self.image= pygame.Surface((30,40))
+        self.image.fill(amarelo)
+        self.rect= self.image.get_rect()
+        self.rect.center= (WIDTH / 2, HEIGHT / 2)
+        self.pos= vet(WIDTH / 2, HEIGHT / 2) #posição
+        self.vel= vet(0, 0)  #velocidade
+        self.acc= vet(0, 0)  #aceleração
+
 class Game:
     def __init__(self):
         #iniciando a janela do jogo
