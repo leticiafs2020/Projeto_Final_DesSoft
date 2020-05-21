@@ -155,7 +155,15 @@ class Game:
                     self.playing= False
                 self.running = False
 
-    def game_over(self):
+    def game_over(self):  
+        # continuação ou termino do jogo
+        if not self.running:
+            return
+        self.screen.fill(fundo)
+        self.draw_text("Game Over", 48, branco, WIDTH/2, HEIGHT/4)
+        self.draw_text("Pontuação: " + str(self.score), 22, branco, WIDTH/2, HEIGHT/2)
+        self.draw_text("Aperte qualquer tecla para jogar denovo!", 22, branco, WIDTH/2, HEIGHT*3/4)
+
 
 g = Game()
 g.tela_inicio()
