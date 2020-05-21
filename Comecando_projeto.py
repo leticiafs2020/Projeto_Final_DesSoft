@@ -31,3 +31,19 @@ class Game:
         self.clock= pygame.time.Clock()
         self.running= True
         self.font_name= pygame.font.match_font(nome_fonte)
+
+    def novo_jogo(self):
+
+    def tela_inicio(self): 
+
+    def draw(self):
+
+    def run(self):
+    
+    def update(self):
+
+    def eventos(self):
+
+    def game_over(self):
+
+    
