@@ -25,7 +25,7 @@ HEIGHT= 600
 FPS= 60
 titulo= 'E.t de volta para casa'
 nome_fonte= 'arial'
-pontuacao_maxima= "highscore.txt"
+pontuacao_maxima= "pontuacao_maxima.txt"
 
 vet= pygame.math.Vector2 # é usado o vetor para o movimento 
 
@@ -154,6 +154,10 @@ class Game:
                 if self.playing:
                     self.playing= False
                 self.running = False
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    self.player.pular()
+
 
     def game_over(self):  
         # continuação ou termino do jogo
