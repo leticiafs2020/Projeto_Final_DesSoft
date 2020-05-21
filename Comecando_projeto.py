@@ -13,6 +13,12 @@ amarelo= (255, 255, 0)
 azul_claro= (0, 155, 155)
 fundo= azul_claro
 
+# propriedades do jogador(player)
+jogador_aceleracao= 0.5
+jogador_atrito= -0.12
+jogador_gravidade= 0.8
+pulo= 20
+
 # configurações do jogo
 WIDTH= 480
 HEIGHT= 600
