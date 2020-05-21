@@ -27,7 +27,7 @@ class Game:
         pygame.init()
         pygame.mixer.init()
         self.screen= pygame.display.set_mode((WIDTH, HEIGHT))
-        pg.display.set_caption(titulo)
+        pygame.display.set_caption(titulo)
         self.clock= pygame.time.Clock()
         self.running= True
         self.font_name= pygame.font.match_font(nome_fonte)
