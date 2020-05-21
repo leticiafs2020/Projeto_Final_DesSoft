@@ -14,3 +14,10 @@ amarelo= (255, 255, 0)
 azul_claro= (0, 155, 155)
 fundo= azul_claro
 
+# configurações do jogo
+WIDTH= 480
+HEIGHT= 600
+FPS= 60
+titulo= 'E.t de volta para casa'
+nome_fonte= 'arial'
+pontuacao_maxima= "highscore.txt"
