@@ -204,6 +204,10 @@ class Game:
             except:
                 self.highscore = 0    
         self.spritesheet=Spritesheet(path.join(imagem_dir,sprite_sheet))     
+        #carregando sons para o jogo
+        self.som_dir = path.join(self.dir, 'som')
+        self.jump_sound= pygame.mixer.Sound(path.join(self.som_dir, 'pulando.ogg')) 
+        self.boost_sound= pygame.mixer.Sound(path.join(self.som_dir, 'perdeu.wav')) 
 
     def novo_jogo(self):
         # para começar um novo jogo
