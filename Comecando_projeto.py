@@ -260,6 +260,7 @@ class Game:
             self.eventos()
             self.update()
             self.draw()
+        pygame.mixer.music.fadeout(500) #p/ parar a musica
     
     def update(self):
         # atualização do loop
