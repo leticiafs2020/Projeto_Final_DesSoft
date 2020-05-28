@@ -281,6 +281,15 @@ class Game:
                 if plat.rect.top >= HEIGHT:
                     plat.kill()
                     self.score += 10
+                    
+        #se o jogador pega um poder
+        poder_colisao= pygame.sprite.spritecollide(self.player, self.poderes, True)
+        for poder in poder_colisao:
+            if poder.type == 'boost':
+                self.boost_sound.play()
+                self.player.vel.y = -boost_poder
+                self.player.jumping= False #p/ o pulo_cut não parar o boost
+
         #Game over:
         if self.player.rect.bottom > HEIGHT: 
             for sprite in self.all_sprites:
