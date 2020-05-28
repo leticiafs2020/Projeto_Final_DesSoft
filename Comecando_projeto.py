@@ -262,8 +262,17 @@ class Game:
         if self.player.vel.y > 0:
             colisao= pygame.sprite.spritecollide(self.player, self.platforms, False)
             if colisao:
-                self.player.pos.y = colisao[0].rect.top
-                self.player.vel.y = 0
+                menor= colisao[0]
+                for colisoes in colisao:
+                    if colisoes.rect.bottom > menor.rect.bottom:
+                        menor= colisoes
+                #p/ ele não ficar flutuando nas extremidades das plataformas  
+                if self.player.pos.x < menor.rect.right and self.player.pos.x > menor.rect.left:
+                    if self.player.pos.y < menor.rect.centery:
+                        self.player.pos.y = menor.rect.top
+                        self.player.vel.y = 0
+                        self.player.jumping= False 
+
         #Se o jogador alcanca 1/4 do topo da tela:
         if self.player.rect.top <= HEIGHT / 4:
             self.player.pos.y += abs(self.player.vel.y)
