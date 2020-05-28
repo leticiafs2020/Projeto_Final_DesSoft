@@ -309,10 +309,7 @@ class Game:
         #Cria novas plataformas sem ultrapassar uma quantidade de 5 plataformas
         while len(self.platforms) < 6:
             width= random.randrange(50, 100)
-            p= Plataforma(random.randrange(0, WIDTH-width),
-               random.randrange(-75, -30), width, 20)
-            self.platforms.add(p)
-            self.all_sprites.add(p)
+            Plataforma(self, randrange(0, WIDTH-width), randrange(-75, -30))
 
     def eventos(self):
         # eventos do loop
