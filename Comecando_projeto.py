@@ -322,7 +322,9 @@ class Game:
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_SPACE:
                     self.player.pular()
-
+            if event.type == pygame.KEYUP:
+                if event.key == pygame.K_SPACE:
+                    self.player.pular_cut() #arrumando o tamanho do salto
 
     def game_over(self):  
         # continuação ou termino do jogo
