@@ -224,6 +224,8 @@ class Game:
 
     def tela_inicio(self):  
         # tela inicial do jogo
+        pygame.mixer.music.load(path.join(self.som_dir, 'durante o jogo.wav'))
+        pygame.mixer.music.play(loops= -1)
         self.screen.fill(fundo)
         self.draw_text(titulo, 48, branco, WIDTH/2, HEIGHT/4)
         self.draw_text("Use o espaço para pular e as setas para andar", 22, branco, WIDTH/2, HEIGHT/2)
@@ -231,6 +233,7 @@ class Game:
         self.draw_text('Sua pontuação máxima é: ' + str(self.highscore), 22, branco, WIDTH/2 , 15)
         pygame.display.flip()
         self.espera_para_comecar()
+        pygame.mixer.music.fadeout(500)
 
     def draw(self):
         #Desenhos do loop:
@@ -281,7 +284,7 @@ class Game:
                 if plat.rect.top >= HEIGHT:
                     plat.kill()
                     self.score += 10
-                    
+
         #se o jogador pega um poder
         poder_colisao= pygame.sprite.spritecollide(self.player, self.poderes, True)
         for poder in poder_colisao:
