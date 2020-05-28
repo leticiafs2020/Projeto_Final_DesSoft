@@ -345,6 +345,7 @@ class Game:
             self.draw_text('Sua pontuação máxima é: ' + str(self.highscore), 22, branco, WIDTH/2, HEIGHT/2 + 40)
         pygame.display.flip()
         self.espera_para_comecar()
+        pygame.mixer.music.fadeout(500)
    
     def espera_para_comecar(self):
         waiting= True
