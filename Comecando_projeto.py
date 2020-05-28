@@ -239,8 +239,10 @@ class Game:
         #Desenhos do loop:
         self.screen.fill(fundo)
         self.all_sprites.draw(self.screen)
+        self.screen.blit(self.player.image, self.player.rect) #p/ o jogador ficar na frente da plataforma 
         self.draw_text(str(self.score), 22, branco, WIDTH/2, 15)
-        pygame.display.flip()
+        pg.display.flip()
+
 
     def draw_text(self, text, size, color, x, y):
         font= pygame.font.Font(self.font_name, size)
