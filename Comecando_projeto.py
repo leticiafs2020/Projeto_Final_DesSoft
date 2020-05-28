@@ -132,7 +132,16 @@ class Player(pygame.sprite.Sprite):
                     self.image= self.walk_frames_l[self.current_frame]
                 self.rect= self.image.get_rect()
                 self.rect.bottom= bottom
-
+        #mostrar animação
+        if not self.jumping and not self.walking:
+            if agora - self.last_update > 350: #350 milisegundos
+                self.last_update = agora
+                self.current_frame= (self.current_frame + 1) % len(self.standing_frame)
+                bottom= self.rect.bottom
+                self.image= self.standing_frame[self.current_frame]
+                self.rect= self.image.get_rect()
+                self.rect.bottom= bottom 
+                
 class Plataforma(pygame.sprite.Sprite):
     def __init__(self, x, y, w, h): # coordenadas e altura
         pygame.sprite.Sprite.__init__(self)
