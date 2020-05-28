@@ -241,7 +241,7 @@ class Game:
         self.all_sprites.draw(self.screen)
         self.screen.blit(self.player.image, self.player.rect) #p/ o jogador ficar na frente da plataforma 
         self.draw_text(str(self.score), 22, branco, WIDTH/2, 15)
-        pg.display.flip()
+        pygame.display.flip()
 
 
     def draw_text(self, text, size, color, x, y):
@@ -253,6 +253,7 @@ class Game:
 
     def run(self):
         #Loop do jogo:
+        pygame.mixer.music.play(loops= -1) #p/ a musica não tocar só uma vez
         self.playing= True
         while self.playing:
             self.clock.tick(FPS)
