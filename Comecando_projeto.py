@@ -59,6 +59,19 @@ class Player(pygame.sprite.Sprite):
         self.vel= vet(0, 0)  #velocidade
         self.acc= vet(0, 0)  #aceleração]
 
+    def load_images(self):
+        self.standing_frame= [self.game.spritesheet.get_image(260, 1032, 128, 256), self.game.spritesheet.get_image(260, 774, 128, 256)]
+        for frame in self.standing_frame:
+            frame.set_colorkey(preto) 
+        self.walk_frames_r= [self.game.spritesheet.get_image(130, 1290, 128, 256),
+                            self.game.spritesheet.get_image(130, 1032, 128, 256) ]
+        self.walk_frames_l= []
+        for frame in self.walk_frames_r: #rotacionando as imagens para a esquerda
+            frame.set_colorkey(preto) 
+            self.walk_frames_l.append(pygame.transform.flip(frame, True, False)) #rotaciona horizontalmente, não verticalmente
+        self.jump_frame= self.game.spritesheet.get_image(260, 516, 128, 256)
+        self.jump_frame.set_colorkey(preto)
+        
     def pular_cut(self):
         if self.jumping:
             if self.vel.y < -3:
