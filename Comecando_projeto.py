@@ -330,6 +330,8 @@ class Game:
         # continuação ou termino do jogo
         if not self.running:
             return
+        pygame.mixer.music.load(path.join(self.som_dir, 'perdeu.wav'))
+        pygame.mixer.music.play()
         self.screen.fill(fundo)
         self.draw_text("Game Over", 48, branco, WIDTH/2, HEIGHT/4)
         self.draw_text("Pontuação: " + str(self.score), 22, branco, WIDTH/2, HEIGHT/2)
