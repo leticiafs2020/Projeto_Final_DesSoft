@@ -49,15 +49,20 @@ class Spritesheet:
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, game):
-        pygame.sprite.Sprite.__init__(self)
+        self.groups= game.all_sprites
+        pygame.sprite.Sprite.__init__(self, self.groups)
         self.game= game
-        self.image= self.game.spritesheet.get_image(260, 1032, 128, 256)
-        self.image.set_colorkey(preto)
+        self.walking= False
+        self.jumping= False 
+        self.current_frame= 0 
+        self.last_update= 0 
+        self.load_images()
+        self.image= self.standing_frame[0]
         self.rect= self.image.get_rect()
-        self.rect.center= (WIDTH / 2, HEIGHT / 2)
-        self.pos= vet(WIDTH / 2, HEIGHT / 2) #posição
+        self.rect.center= (40, HEIGHT - 100) #p/ ele começar no canto inferior esquerdo da tela
+        self.pos= vet(40, HEIGHT - 100) #posição
         self.vel= vet(0, 0)  #velocidade
-        self.acc= vet(0, 0)  #aceleração]
+        self.acc= vet(0, 0)  #aceleração
 
     def load_images(self):
         self.standing_frame= [self.game.spritesheet.get_image(260, 1032, 128, 256), self.game.spritesheet.get_image(260, 774, 128, 256)]
