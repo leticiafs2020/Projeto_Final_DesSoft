@@ -216,11 +216,10 @@ class Game:
         self.platforms= pygame.sprite.Group()
         self.poderes= pygame.sprite.Group()
         self.player= Player(self)
-        self.all_sprites.add(self.player)
         for plat in l_plataformas:
-            p= Plataforma(*plat) #explora a lista de plataformas
-            self.all_sprites.add(p)
-            self.platforms.add(p)
+            Plataforma(self, *plat) #explora a lista de plataformas
+        pygame.mixer.music.load(path.join(self.som_dir, 'durante o jogo.wav'))
+
         self.run()
 
     def tela_inicio(self):  
