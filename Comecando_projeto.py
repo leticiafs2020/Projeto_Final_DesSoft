@@ -57,8 +57,13 @@ class Player(pygame.sprite.Sprite):
         self.rect.center= (WIDTH / 2, HEIGHT / 2)
         self.pos= vet(WIDTH / 2, HEIGHT / 2) #posição
         self.vel= vet(0, 0)  #velocidade
-        self.acc= vet(0, 0)  #aceleração
-    
+        self.acc= vet(0, 0)  #aceleração]
+
+    def pular_cut(self):
+        if self.jumping:
+            if self.vel.y < -3:
+                self.vel.y = -3
+
     def pular(self):
         #só pula se tiver em alguma plataforma
         self.rect.x += 1
