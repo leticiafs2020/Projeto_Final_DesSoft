@@ -214,6 +214,7 @@ class Game:
         self.score= 0
         self.all_sprites= pygame.sprite.Group()
         self.platforms= pygame.sprite.Group()
+        self.poderes= pygame.sprite.Group()
         self.player= Player(self)
         self.all_sprites.add(self.player)
         for plat in l_plataformas:
