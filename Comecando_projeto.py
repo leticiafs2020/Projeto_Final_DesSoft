@@ -178,6 +178,11 @@ class Poder(pygame.sprite.Sprite):
         self.rect.centerx= self.plat.rect.centerx
         self.rect.bottom= self.plat.rect.top - 5
 
+    def update(self):
+        self.rect.bottom= self.plat.rect.top - 5
+        if not self.game.platforms.has(self.plat): #o poder so vai existir se tiver alguma plataforma
+            self.kill() 
+
 class Game:
     def __init__(self):
         #iniciando a janela do jogo
