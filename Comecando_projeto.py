@@ -94,20 +94,24 @@ class Player(pygame.sprite.Sprite):
             self.acc.x= -jogador_aceleracao
         if keys[pygame.K_RIGHT]:
             self.acc.x= jogador_aceleracao
- 
+
         #Aplicando atrito para o jogador não ir muito rápido:
         self.acc.x += self.vel.x * jogador_atrito
+        
         #Equações para o movimento:
-        self.vel += self.acc
+        self.vel += self.acc 
+        if abs(self.vel.x) < 0.1: #abs pois pode ser positiva ou negativa
+             self.vel.x = 0 #forçando a ficar zero p/ o personagem parar
+
         self.pos += self.vel + 0.5*self.acc
-        #Para o jogador não sair do quadrado da tela:
-        if self.pos.x > WIDTH:
-            self.pos.x = 0
-        if self.pos.x < 0:
-            self.pos.x = WIDTH
+
+        # para o jogador não sair do quadrado da tela
+        if self.pos.x > WIDTH + self.rect.width / 2:
+            self.pos.x = 0 - self.rect.width / 2
+        if self.pos.x < 0 - self.rect.width / 2:
+            self.pos.x = WIDTH + self.rect.width / 2
  
         self.rect.midbottom = self.pos
-
 
 class Plataforma(pygame.sprite.Sprite):
     def __init__(self, x, y, w, h): # coordenadas e altura
