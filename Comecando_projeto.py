@@ -79,10 +79,12 @@ class Player(pygame.sprite.Sprite):
 
     def pular(self):
         #só pula se tiver em alguma plataforma
-        self.rect.x += 1
+        self.rect.x += 2
         colisao= pygame.sprite.spritecollide(self, self.game.platforms, False)
-        self.rect.x -= 1 #não é visível isso, mas necessário
-        if colisao:
+        self.rect.x -= 2 #não é visível isso, mas necessário
+        if colisao and not self.jumping:
+            self.game.jump_sound.play() #só faz esse som quando ele pula p/ outra plataforma
+            self.jumping= True
             self.vel.y = -pulo
     
     def update(self):
