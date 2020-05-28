@@ -88,6 +88,7 @@ class Player(pygame.sprite.Sprite):
             self.vel.y = -pulo
     
     def update(self):
+        self.animate()
         self.acc= vet(0, jogador_gravidade)
         keys= pygame.key.get_pressed()
         if keys[pygame.K_LEFT]:
@@ -112,6 +113,25 @@ class Player(pygame.sprite.Sprite):
             self.pos.x = WIDTH + self.rect.width / 2
  
         self.rect.midbottom = self.pos
+
+    def animate(self):
+        agora= pygame.time.get_ticks()
+        if self.vel.x != 0:
+            self.walking= True
+        else:
+            self.walking= False
+        #animação para andar 
+        if self.walking:
+            if agora - self.last_update > 200: #vai depender de quanto o et estiver rápido
+                self.last_update = agora
+                self.current_frame= (self.current_frame + 1) % len(self.walk_frames_l)
+                bottom= self.rect.bottom
+                if self.vel.x > 0: #ver qual a direção que está andando
+                    self.image= self.walk_frames_r[self.current_frame] 
+                else:
+                    self.image= self.walk_frames_l[self.current_frame]
+                self.rect= self.image.get_rect()
+                self.rect.bottom= bottom
 
 class Plataforma(pygame.sprite.Sprite):
     def __init__(self, x, y, w, h): # coordenadas e altura
