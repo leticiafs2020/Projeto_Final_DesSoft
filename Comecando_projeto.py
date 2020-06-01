@@ -191,6 +191,20 @@ class Poder(pygame.sprite.Sprite):
         if not self.game.platforms.has(self.plat): #o poder so vai existir se tiver alguma plataforma
             self.kill() 
 
+class Nuvem(pygame.sprite.Sprite):
+    def __init__(self, game): 
+        self._layer= layer_nuvem
+        self.groups= game.all_sprites, game.nuvens #lista de grupos que vamos usar
+        pygame.sprite.Sprite.__init__(self, self.groups)
+        self.game= game
+        self.image= choice(self.game.nuvem_images)
+        self.image.set_colorkey(preto)
+        self.rect= self.image.get_rect()
+        escala= randrange(50, 101) / 100
+        self.image= pygame.transform.scale(self.image, (int(self.rect.width * escala), int(self.rect.height * escala)))
+        self.rect.x = randrange(WIDTH - self.rect.width)
+        self.rect.y = randrange(-500, -50)
+
 class Game:
     def __init__(self):
         #iniciando a janela do jogo
