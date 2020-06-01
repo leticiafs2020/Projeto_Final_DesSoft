@@ -340,6 +340,15 @@ class Game:
     def update(self):
         # atualização do loop
         self.all_sprites.update()
+        #spawn a moob
+        agora= pygame.time.get_ticks()
+        if agora - self.moob_timer > 5000 + choice([-1000, -500, 0, 500, 1000]):  #p/ ficar uma hora maior e outra menor--> variando 
+            self.moob_timer = agora
+            Moob(self)
+        # colisão do contorno da abelha com o contorno do et
+        moob_colisao= pygame.sprite.spritecollide(self.player, self.moobs, False, pygame.sprite.collide_mask)
+        if moob_colisao:
+            self.playing= False
         #Checa se o jogador bateu na plataforma, só se estiver caindo:
         if self.player.vel.y > 0:
             colisao= pygame.sprite.spritecollide(self.player, self.platforms, False)
