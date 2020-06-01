@@ -285,6 +285,8 @@ class Game:
         self.all_sprites= pygame.sprite.LayeredUpdates()  #especifica um n° 
         self.platforms= pygame.sprite.Group()
         self.poderes= pygame.sprite.Group()
+        self.moobs= pygame.sprite.Group()
+        self.nuvens= pygame.sprite.Group()
         self.player= Player(self)
         for plat in l_plataformas:
             Plataforma(self, *plat) #explora a lista de plataformas
