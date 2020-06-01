@@ -8,9 +8,9 @@ branco= (255, 255, 255)
 preto= (0, 0, 0)
 vermelho= (255, 0, 0)
 verde= (0, 255, 0)
-azul= (0, 0, 255)
+azul= (0, 100, 100)
 amarelo= (255, 255, 0)
-azul_claro= (0, 155, 155)
+azul_claro= (0, 210, 210)
 fundo= azul_claro
 
 # propriedades do jogador(player)
@@ -23,7 +23,7 @@ pulo= 20
 WIDTH= 480
 HEIGHT= 600
 FPS= 60
-titulo= 'E.t de volta para casa'
+titulo= 'E.T de volta para casa'
 nome_fonte= 'arial'
 pontuacao_maxima= "pontuacao_maxima.txt"
 sprite_sheet = "spritesheet_complete.png"
