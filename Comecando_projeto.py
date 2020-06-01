@@ -29,9 +29,9 @@ pontuacao_maxima= "pontuacao_maxima.txt"
 sprite_sheet = "spritesheet_complete.png"
 
 # plataformas iniciais 
-l_plataformas= [(0, HEIGHT-40, WIDTH, 40), (175, 100, 50, 20),
-(WIDTH / 2 - 50, HEIGHT * 3 /4, 100, 20),
-(350, 200, 100, 20), (125, HEIGHT - 350, 100, 20)] 
+l_plataformas= [(0, HEIGHT-60), (175, 100),
+(WIDTH / 2 - 50, HEIGHT * 3 /4),
+(350, 200), (125, HEIGHT - 350)]
 
 #propriedades do jogo
 boost_poder= 60
