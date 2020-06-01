@@ -210,6 +210,26 @@ class Nuvem(pygame.sprite.Sprite):
         if self.rect.top > HEIGHT * 2:
             self.kill()
 
+class Moob(pygame.sprite.Sprite):
+    def __init__(self, game):
+        self._layer= layer_moob
+        self.groups= game.all_sprites, game.moobs #todos os grupos que vamos usar
+        pygame.sprite.Sprite.__init__(self, self.groups)
+        self.game= game
+        self.image_up= self.game.spritesheet.get_image(3510, 130, 128, 128) #pega as imagens da abelha c/ a asa p/ cima
+        self.image_up.set_colorkey(preto) 
+        self.image_down= self.game.spritesheet.get_image(3380, 1820, 128, 128) #pega as imagens da abelha c/ a asa p/ baixo
+        self.image_down.set_colorkey(preto)
+        self.image= self.image_up 
+        self.rect= self.image.get_rect()
+        self.rect.centerx = choice([-100, WIDTH + 100]) #p/ a abelha subir e descer enquanto voa
+        self.vx= randrange(1, 4)
+        if self.rect.centerx > WIDTH:
+            self.vx *= -1
+        self.rect.y= randrange(HEIGHT / 2)
+        self.vy= 0
+        self.dy= 0.5
+
 class Game:
     def __init__(self):
         #iniciando a janela do jogo
