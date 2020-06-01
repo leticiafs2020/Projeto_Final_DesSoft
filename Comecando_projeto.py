@@ -290,8 +290,11 @@ class Game:
         self.player= Player(self)
         for plat in l_plataformas:
             Plataforma(self, *plat) #explora a lista de plataformas
+        self.moob_timer= 0.1
         pygame.mixer.music.load(path.join(self.som_dir, 'no jogo.wav'))
-
+        for i in range(7): # p/ colocar nuvens na tela inicial 
+            n= Nuvem(self)
+            n.rect.y += 500
         self.run()
 
     def tela_inicio(self):  
