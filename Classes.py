@@ -132,4 +132,22 @@ class Plataforma(pygame.sprite.Sprite):
         self.rect.y = y
         if randrange(100) < spawn_pct_po:
             Poder(self.game, self)
-                
+
+class Poder(pygame.sprite.Sprite):
+    def __init__(self, game, plat):
+        self._layer= layer_poder
+        self.groups= game.all_sprites, game.poderes #todos os grupos que vamos usar
+        pygame.sprite.Sprite.__init__(self, self.groups)
+        self.game= game
+        self.plat= plat
+        self.type= choice(['boost'])
+        self.image= self.game.spritesheet.get_image(2470, 1170, 128, 128)
+        self.image.set_colorkey(preto)
+        self.rect= self.image.get_rect()
+        self.rect.centerx= self.plat.rect.centerx
+        self.rect.bottom= self.plat.rect.top - 5
+
+    def update(self):
+        self.rect.bottom= self.plat.rect.top - 5
+        if not self.game.platforms.has(self.plat): #o poder so vai existir se tiver alguma plataforma
+            self.kill() 
