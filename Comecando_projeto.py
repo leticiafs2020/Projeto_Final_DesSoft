@@ -268,6 +268,12 @@ class Game:
             except:
                 self.highscore = 0    
         self.spritesheet=Spritesheet(path.join(imagem_dir,sprite_sheet))     
+        
+        #imagem para o fundo 
+        self.nuvem_images= []
+        for i in range(1, 4): # sorteia diferentes formatos de nuvem 
+            self.nuvem_images.append(pygame.image.load(path.join(imagem_dir, 'nuvem{}.png'.format(i))).convert())
+
         #carregando sons para o jogo
         self.som_dir = path.join(self.dir, 'som')
         self.jump_sound= pygame.mixer.Sound(path.join(self.som_dir, 'pulando.ogg')) 
