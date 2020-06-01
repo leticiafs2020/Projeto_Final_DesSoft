@@ -59,6 +59,7 @@ class Spritesheet:
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, game):
+        self._layer= layer_jogador
         self.groups= game.all_sprites
         pygame.sprite.Sprite.__init__(self, self.groups)
         self.game= game
