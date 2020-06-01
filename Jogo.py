@@ -98,7 +98,7 @@ class Game:
         self.all_sprites.update()
         #criando um inimigo
         agora= pygame.time.get_ticks()
-        if agora - self.inimigo_timer > 5000 + choice([-1000, -500, 0, 500, 1000]):  #p/ ficar uma hora maior e outra menor--> variando 
+        if agora - self.inimigo_timer > frequencia_inimigo + choice([-1000, -500, 0, 500, 1000]):  #p/ ficar uma hora maior e outra menor--> variando 
             self.inimigo_timer = agora
             Inimigo(self)
         # colisão do contorno da abelha com o contorno do et
