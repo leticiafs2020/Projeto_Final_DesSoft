@@ -366,7 +366,13 @@ class Game:
 
         #Se o jogador alcanca 1/4 do topo da tela:
         if self.player.rect.top <= HEIGHT / 4:
-            self.player.pos.y += abs(self.player.vel.y)
+            if randrange(100) < 15:
+                Nuvem(self)
+            self.player.pos.y += max(abs(self.player.vel.y), 2)
+            for nuvem in self.nuvens:
+                nuvem.rect.y += max(abs(self.player.vel.y / 2 ), 2)
+            for moob in self.moobs:
+                moob.rect.y += max(abs(self.player.vel.y), 2)
             for plat in self.platforms:
                 plat.rect.y += abs(self.player.vel.y)
                 if plat.rect.top >= HEIGHT:
