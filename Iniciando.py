@@ -4,7 +4,7 @@ from Classes import *
 from Jogo import *
 from Configuracoes import *
  
-
+pygame.init()
 
 g = Game()
 g.tela_inicio()
