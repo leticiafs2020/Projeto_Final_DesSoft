@@ -160,6 +160,7 @@ class Player(pygame.sprite.Sprite):
                 
 class Plataforma(pygame.sprite.Sprite):
     def __init__(self, game, x, y): # coordenadas
+        self._layer= layer_plataforma
         self.groups= game.all_sprites, game.platforms #lista de grupos que vamos usar
         pygame.sprite.Sprite.__init__(self, self.groups)
         self.game= game
