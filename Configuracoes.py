@@ -35,6 +35,6 @@ frequencia_moob= 5000 #ms = 5 segundos
 layer_jogador= 2
 layer_plataforma= 1
 layer_poder= 1
-layer_moob= 2
+layer_inimigo= 2
 layer_nuvem= 0 
 

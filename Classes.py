@@ -169,10 +169,10 @@ class Nuvem(pygame.sprite.Sprite):
         if self.rect.top > HEIGHT * 2:
             self.kill()
 
-class Moob(pygame.sprite.Sprite):
+class Inimigo(pygame.sprite.Sprite):
     def __init__(self, game):
-        self._layer= layer_moob
-        self.groups= game.all_sprites, game.moobs #todos os grupos que vamos usar
+        self._layer= layer_inimigo
+        self.groups= game.all_sprites, game.inimigos #todos os grupos que vamos usar
         pygame.sprite.Sprite.__init__(self, self.groups)
         self.game= game
         self.image_up= self.game.spritesheet.get_image(3510, 130, 128, 128) #pega as imagens da abelha c/ a asa p/ cima

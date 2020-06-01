@@ -41,12 +41,12 @@ class Game:
         self.all_sprites= pygame.sprite.LayeredUpdates()  #especifica um n° 
         self.platforms= pygame.sprite.Group()
         self.poderes= pygame.sprite.Group()
-        self.moobs= pygame.sprite.Group()
+        self.inimigos= pygame.sprite.Group()
         self.nuvens= pygame.sprite.Group()
         self.player= Player(self)
         for plat in l_plataformas:
             Plataforma(self, *plat) #explora a lista de plataformas
-        self.moob_timer= 0.1
+        self.inimigo_timer= 0.1
         pygame.mixer.music.load(path.join(self.som_dir, 'no jogo.wav'))
         for i in range(7): # p/ colocar nuvens na tela inicial 
             n= Nuvem(self)
@@ -96,14 +96,14 @@ class Game:
     def update(self):
         # atualização do loop
         self.all_sprites.update()
-        #spawn a moob
+        #criando um inimigo
         agora= pygame.time.get_ticks()
-        if agora - self.moob_timer > 5000 + choice([-1000, -500, 0, 500, 1000]):  #p/ ficar uma hora maior e outra menor--> variando 
-            self.moob_timer = agora
-            Moob(self)
+        if agora - self.inimigo_timer > 5000 + choice([-1000, -500, 0, 500, 1000]):  #p/ ficar uma hora maior e outra menor--> variando 
+            self.inimigo_timer = agora
+            Inimigo(self)
         # colisão do contorno da abelha com o contorno do et
-        moob_colisao= pygame.sprite.spritecollide(self.player, self.moobs, False, pygame.sprite.collide_mask)
-        if moob_colisao:
+        inimigo_colisao= pygame.sprite.spritecollide(self.player, self.inimigos, False, pygame.sprite.collide_mask)
+        if inimigo_colisao:
             self.playing= False
         #Checa se o jogador bateu na plataforma, só se estiver caindo:
         if self.player.vel.y > 0:
@@ -127,8 +127,8 @@ class Game:
             self.player.pos.y += max(abs(self.player.vel.y), 2)
             for nuvem in self.nuvens:
                 nuvem.rect.y += max(abs(self.player.vel.y / 2 ), 2)
-            for moob in self.moobs:
-                moob.rect.y += max(abs(self.player.vel.y), 2)
+            for inimigo in self.inimigos:
+                inimigo.rect.y += max(abs(self.player.vel.y), 2)
             for plat in self.platforms:
                 plat.rect.y += abs(self.player.vel.y)
                 if plat.rect.top >= HEIGHT:
