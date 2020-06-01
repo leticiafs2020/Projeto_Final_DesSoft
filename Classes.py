@@ -1,9 +1,8 @@
-import Configuracoes
-import Iniciando
-import Jogo
+from Configuracoes import *
 from random import randrange, choice
-from os import path
 import pygame
+
+vet= pygame.math.Vector2 # é usado o vetor para o movimento
 
 class Spritesheet:
    #Classe para carregar as Spritesheets

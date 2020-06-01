@@ -1,6 +1,5 @@
-import Classes
-import Iniciando
-import Configuracoes
+from Classes import *
+from Configuracoes import *
 from random import randrange, choice
 from os import path
 import pygame

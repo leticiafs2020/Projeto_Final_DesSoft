@@ -1,7 +1,8 @@
 #Importando as bibliotecas necessárias:
 import pygame
-from random import choice, randrange
-from os import path
+from Classes import *
+from Jogo import *
+from Configuracoes import *
  
 
 

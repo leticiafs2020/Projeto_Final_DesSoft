@@ -1,6 +1,3 @@
-import pygame
-import math
-
 # definindo as cores
 branco= (255, 255, 255)
 preto= (0, 0, 0)
@@ -41,4 +38,3 @@ layer_poder= 1
 layer_moob= 2
 layer_nuvem= 0 
 
-vet= pygame.math.Vector2 # é usado o vetor para o movimento
