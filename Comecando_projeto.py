@@ -204,6 +204,10 @@ class Nuvem(pygame.sprite.Sprite):
         self.image= pygame.transform.scale(self.image, (int(self.rect.width * escala), int(self.rect.height * escala)))
         self.rect.x = randrange(WIDTH - self.rect.width)
         self.rect.y = randrange(-500, -50)
+ 
+    def update(self):
+        if self.rect.top > HEIGHT * 2:
+            self.kill()
 
 class Game:
     def __init__(self):
