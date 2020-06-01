@@ -206,10 +206,3 @@ class Game:
                 if event.type == pygame.KEYUP:
                     waiting= False 
 
-g = Game()
-g.tela_inicio()
-while g.running:
-    g.novo_jogo()
-    g.game_over()
- 
-pygame.quit()
