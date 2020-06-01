@@ -218,7 +218,7 @@ class Game:
         self.player= Player(self)
         for plat in l_plataformas:
             Plataforma(self, *plat) #explora a lista de plataformas
-        pygame.mixer.music.load(path.join(self.som_dir, 'durante o jogo.wav'))
+        pygame.mixer.music.load(path.join(self.som_dir, 'no jogo.wav'))
 
         self.run()
 
