@@ -1,6 +1,6 @@
 #Importando as bibliotecas necessárias:
 import pygame
-import random
+from random import choice, randrange
 from os import path
  
 # definindo as cores
