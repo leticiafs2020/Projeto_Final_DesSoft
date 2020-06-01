@@ -282,7 +282,7 @@ class Game:
     def novo_jogo(self):
         # para começar um novo jogo
         self.score= 0
-        self.all_sprites= pygame.sprite.Group()
+        self.all_sprites= pygame.sprite.LayeredUpdates()  #especifica um n° 
         self.platforms= pygame.sprite.Group()
         self.poderes= pygame.sprite.Group()
         self.player= Player(self)
