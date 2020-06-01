@@ -31,7 +31,7 @@ sprite_sheet = "spritesheet_complete.png"
 # plataformas iniciais 
 l_plataformas= [(0, HEIGHT-60), (175, 100),
 (WIDTH / 2 - 50, HEIGHT * 3 /4),
-(350, 200), (125, HEIGHT - 350)]
+(350, 200), (125, HEIGHT - 350)] 
 
 #propriedades do jogo
 boost_poder= 60
