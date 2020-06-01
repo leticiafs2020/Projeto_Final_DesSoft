@@ -175,6 +175,7 @@ class Plataforma(pygame.sprite.Sprite):
         
 class Poder(pygame.sprite.Sprite):
     def __init__(self, game, plat):
+        self._layer= layer_poder
         self.groups= game.all_sprites, game.poderes #todos os grupos que vamos usar
         pygame.sprite.Sprite.__init__(self, self.groups)
         self.game= game
