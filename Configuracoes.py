@@ -2,9 +2,7 @@
 branco= (255, 255, 255)
 preto= (0, 0, 0)
 vermelho= (255, 0, 0)
-verde= (0, 255, 0)
 azul= (0, 100, 100)
-amarelo= (255, 255, 0)
 azul_claro= (0, 210, 210)
 fundo= azul_claro
 
