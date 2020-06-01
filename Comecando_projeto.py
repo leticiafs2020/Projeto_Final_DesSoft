@@ -35,7 +35,13 @@ l_plataformas= [(0, HEIGHT-60), (175, 100),
 
 #propriedades do jogo
 boost_poder= 60
-spawn_pct_po= 7 #tempo p/ responder 
+spawn_pct_po= 7 #tempo p/ responder
+frequencia_moob= 5000 #ms = 5 segundos 
+layer_jogador= 2
+layer_plataforma= 1
+layer_poder= 1
+layer_moob= 2
+layer_nuvem= 0 
 
 vet= pygame.math.Vector2 # é usado o vetor para o movimento 
 
