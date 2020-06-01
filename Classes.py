@@ -117,4 +117,19 @@ class Player(pygame.sprite.Sprite):
                 self.image= self.standing_frame[self.current_frame]
                 self.rect= self.image.get_rect()
                 self.rect.bottom= bottom 
+
+class Plataforma(pygame.sprite.Sprite):
+    def __init__(self, game, x, y): # coordenadas
+        self._layer= layer_plataforma
+        self.groups= game.all_sprites, game.platforms #lista de grupos que vamos usar
+        pygame.sprite.Sprite.__init__(self, self.groups)
+        self.game= game
+        images= [self.game.spritesheet.get_image(208, 1879, 201, 100)]
+        self.image= choice(images)
+        self.image.set_colorkey(preto)
+        self.rect= self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+        if randrange(100) < spawn_pct_po:
+            Poder(self.game, self)
                 
