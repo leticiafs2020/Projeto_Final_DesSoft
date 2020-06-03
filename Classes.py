@@ -7,27 +7,27 @@ vet= pygame.math.Vector2 # é usado o vetor para o movimento
 class Spritesheet:
    #Classe para carregar as Spritesheets
    def __init__(self, filename):
-       self.spritesheet = pygame.image.load(filename).convert()
+       self.spritesheet = pygame.image.load(filename).convert() #convertendo a imagem do arquivo para o jogo
  
    def get_image(self, x, y, width, height):
        #pegando uma imagem da spritsheet
        imagem = pygame.Surface((width, height))
-       imagem.blit(self.spritesheet, (0, 0), (x, y, width, height))
-       imagem = pygame.transform.scale(imagem, (width // 3, height // 3))
+       imagem.blit(self.spritesheet, (0, 0), (x, y, width, height)) #coordenadas 
+       imagem = pygame.transform.scale(imagem, (width // 3, height // 3)) # tamanho do ET 
        return imagem
 
 class Player(pygame.sprite.Sprite):
     def __init__(self, game):
-        self._layer= layer_jogador
-        self.groups= game.all_sprites
+        self._layer= layer_jogador # configurando a camada em que o jogador está 
+        self.groups= game.all_sprites # adicionando na função o grupo de sprites
         pygame.sprite.Sprite.__init__(self, self.groups)
         self.game= game
-        self.walking= False
-        self.jumping= False 
+        self.andando= False
+        self.pulando= False 
         self.current_frame= 0 
         self.last_update= 0 
         self.load_images()
-        self.image= self.standing_frame[0]
+        self.image= self.standing_frame[0] # imagem do jogador parado 
         self.rect= self.image.get_rect()
         self.rect.center= (40, HEIGHT - 100) #p/ ele começar no canto inferior esquerdo da tela
         self.pos= vet(40, HEIGHT - 100) #posição
@@ -48,7 +48,7 @@ class Player(pygame.sprite.Sprite):
         self.jump_frame.set_colorkey(preto)
         
     def pular_cut(self):
-        if self.jumping:
+        if self.pulando:
             if self.vel.y < -3:
                 self.vel.y = -3
 
@@ -57,9 +57,9 @@ class Player(pygame.sprite.Sprite):
         self.rect.x += 2
         colisao= pygame.sprite.spritecollide(self, self.game.platforms, False)
         self.rect.x -= 2 #não é visível isso, mas necessário
-        if colisao and not self.jumping:
+        if colisao and not self.pulando:
             self.game.jump_sound.play() #só faz esse som quando ele pula p/ outra plataforma
-            self.jumping= True
+            self.pulando= True
             self.vel.y = -pulo
     
     def update(self):
@@ -92,11 +92,11 @@ class Player(pygame.sprite.Sprite):
     def animate(self):
         agora= pygame.time.get_ticks()
         if self.vel.x != 0:
-            self.walking= True
+            self.andando= True
         else:
-            self.walking= False
+            self.andando= False
         #animação para andar 
-        if self.walking:
+        if self.andando:
             if agora - self.last_update > 200: #vai depender de quanto o et estiver rápido
                 self.last_update = agora
                 self.current_frame= (self.current_frame + 1) % len(self.walk_frames_l)
@@ -108,7 +108,7 @@ class Player(pygame.sprite.Sprite):
                 self.rect= self.image.get_rect()
                 self.rect.bottom= bottom
         #mostrar animação
-        if not self.jumping and not self.walking:
+        if not self.pulando and not self.andando:
             if agora - self.last_update > 350: #350 milisegundos
                 self.last_update = agora
                 self.current_frame= (self.current_frame + 1) % len(self.standing_frame)

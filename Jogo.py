@@ -133,7 +133,7 @@ class Game:
                     if self.player.pos.y < menor.rect.centery:
                         self.player.pos.y = menor.rect.top
                         self.player.vel.y = 0
-                        self.player.jumping= False 
+                        self.player.pulando= False 
 
         #Se o jogador alcanca 1/4 do topo da tela:
         #Efeito de que o jogador está subindo e os componentes estão ficando para baixo/trás, criando novos componentes logo acima
@@ -159,7 +159,7 @@ class Game:
                 #Som de quando se pega o boost
                 self.boost_sound.play()
                 self.player.vel.y = -boost_poder
-                self.player.jumping= False #Para a função pulo_cut não limitar o salto do boost
+                self.player.pulando= False #Para a função pulo_cut não limitar o salto do boost
 
         #Game over:
         if self.player.rect.bottom > HEIGHT: 
