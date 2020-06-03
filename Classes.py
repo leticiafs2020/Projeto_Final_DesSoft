@@ -194,21 +194,21 @@ class Inimigo(pygame.sprite.Sprite):
             self.vx *= -1
         self.rect.y= randrange(HEIGHT / 2) # abelha só aparece na altura do meio da janela 
         self.vy= 0 # velocidade nula, já que ela não vai voar nessa direção 
-        self.dy= 0.5 
+        self.dy= 0.5 #Variação de espaço entre um inimigo e outro 
 
     def update(self):
-        self.rect.x += self.vx
-        self.vy += self.dy
+        self.rect.x += self.vx 
+        self.vy += self.dy  
         if self.vy > 3 or self.vy < -3:
             self.dy *= -1
         centro= self.rect.center
         if self.dy < 0:
-            self.image= self.image_up
+            self.image= self.image_up #Se o inimigo subir no eixo Y, é aplicada a imagem dele subindo
         else:
-            self.image= self.image_down
+            self.image= self.image_down #Se o inimigo descer no eixo Y, é aplicada a imagem dele descendo
         self.rect= self.image.get_rect()
-        self.mask= pygame.mask.from_surface(self.image)
+        self.mask= pygame.mask.from_surface(self.image) #Criando uma mask na imagem do inimigo
         self.rect.center= centro
         self.rect.y += self.vy
-        if self.rect.left > WIDTH + 100 or self.rect.right < -100:
+        if self.rect.left > WIDTH + 100 or self.rect.right < -100: #Se o inimgo ultrapassar a largura da janela, ele morre
             self.kill()
