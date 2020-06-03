@@ -125,75 +125,76 @@ class Player(pygame.sprite.Sprite):
 
 class Plataforma(pygame.sprite.Sprite):
     def __init__(self, game, x, y): # coordenadas
-        self._layer= layer_plataforma
+        self._layer= layer_plataforma # em qual camada a plataforma esta 
         self.groups= game.all_sprites, game.platforms #lista de grupos que vamos usar
         pygame.sprite.Sprite.__init__(self, self.groups)
         self.game= game
-        images= [self.game.spritesheet.get_image(208, 1879, 201, 100)]
-        self.image= choice(images)
-        self.image.set_colorkey(preto)
-        self.rect= self.image.get_rect()
-        self.rect.x = x
+        imagem= self.game.spritesheet.get_image(208, 1879, 201, 100) # adicionando as coordenadas da plataforma 
+        self.image= imagem # definindo a imagem da plataforma 
+        self.image.set_colorkey(preto) # preenchendo o fundo de preto 
+        self.rect= self.image.get_rect() # definindo a imagem como um retângulo
+        self.rect.x = x 
         self.rect.y = y
-        if randrange(100) < spawn_pct_po:
+        if randrange(100) < poder_na_plat: # para colocar o poder em cima da plataforma 
             Poder(self.game, self)
 
 class Poder(pygame.sprite.Sprite):
     def __init__(self, game, plat):
-        self._layer= layer_poder
+        self._layer= layer_poder # em qual camada o poder está
         self.groups= game.all_sprites, game.poderes #todos os grupos que vamos usar
         pygame.sprite.Sprite.__init__(self, self.groups)
         self.game= game
         self.plat= plat
-        self.type= choice(['boost'])
-        self.image= self.game.spritesheet.get_image(2470, 1170, 128, 128)
-        self.image.set_colorkey(preto)
-        self.rect= self.image.get_rect()
-        self.rect.centerx= self.plat.rect.centerx
-        self.rect.bottom= self.plat.rect.top - 5
+        self.type= choice(['boost']) # função do pygame 
+        self.image= self.game.spritesheet.get_image(2470, 1170, 128, 128) # coordenadas de onde a imagem do poder
+        self.image.set_colorkey(preto) # preenchendo o fundo de preto 
+        self.rect= self.image.get_rect() # definindo a imagem como um retângulo
+        self.rect.centerx= self.plat.rect.centerx # para o poder ficar no centro da plataforma 
+        self.rect.bottom= self.plat.rect.top - 5 # para o poder ficar em cima/flutuando na plataforma 
 
     def update(self):
         self.rect.bottom= self.plat.rect.top - 5
         if not self.game.platforms.has(self.plat): #o poder so vai existir se tiver alguma plataforma
-            self.kill() 
+            self.kill() # se não tiver plataforma, o poder "morre"
 
 class Nuvem(pygame.sprite.Sprite):
     def __init__(self, game): 
-        self._layer= layer_nuvem
+        self._layer= layer_nuvem # em qual camada a nuvem vai ficar 
         self.groups= game.all_sprites, game.nuvens #lista de grupos que vamos usar
         pygame.sprite.Sprite.__init__(self, self.groups)
         self.game= game
-        self.image= choice(self.game.nuvem_images)
-        self.image.set_colorkey(preto)
-        self.rect= self.image.get_rect()
-        escala= randrange(50, 101) / 100
+        self.image= choice(self.game.nuvem_images) # sortear a imagem das nuvens pré definidas
+        self.image.set_colorkey(preto) # preenche o fundo de preto
+        self.rect= self.image.get_rect() # definindo a imagem como um retângulo 
+        escala= randrange(50, 101) / 100 # escala do tamanho da figura
+        # aplicando a escala na imagem --> transformando 
         self.image= pygame.transform.scale(self.image, (int(self.rect.width * escala), int(self.rect.height * escala)))
-        self.rect.x = randrange(WIDTH - self.rect.width)
+        self.rect.x = randrange(WIDTH - self.rect.width) # variar a imagem da nuvem para vários lugares da tela 
         self.rect.y = randrange(-500, -50)
  
     def update(self):
-        if self.rect.top > HEIGHT * 2:
-            self.kill()
+        if self.rect.top > HEIGHT * 2: # se o dobro da altura da janela for menor que o topo do retângulo  
+            self.kill() # ela morre 
 
 class Inimigo(pygame.sprite.Sprite):
     def __init__(self, game):
-        self._layer= layer_inimigo
+        self._layer= layer_inimigo # em qual camada o inimigo está 
         self.groups= game.all_sprites, game.inimigos #todos os grupos que vamos usar
         pygame.sprite.Sprite.__init__(self, self.groups)
         self.game= game
-        self.image_up= self.game.spritesheet.get_image(3510, 130, 128, 128) #pega as imagens da abelha c/ a asa p/ cima
-        self.image_up.set_colorkey(preto) 
-        self.image_down= self.game.spritesheet.get_image(3380, 1820, 128, 128) #pega as imagens da abelha c/ a asa p/ baixo
-        self.image_down.set_colorkey(preto)
-        self.image= self.image_up 
-        self.rect= self.image.get_rect()
-        self.rect.centerx = choice([-100, WIDTH + 100]) #p/ a abelha subir e descer enquanto voa
-        self.vx= randrange(1, 4)
-        if self.rect.centerx > WIDTH:
+        self.image_up= self.game.spritesheet.get_image(3510, 130, 128, 128) #pega as imagens da abelha com a asa para cima
+        self.image_up.set_colorkey(preto) # preenche o fundo da imagem de preto
+        self.image_down= self.game.spritesheet.get_image(3380, 1820, 128, 128) #pega as imagens da abelha com a asa para baixo
+        self.image_down.set_colorkey(preto) # preenche o fundo da imagem de preto
+        self.image= self.image_up # definindo a imagem como a imagem da abelha com a asa para cima
+        self.rect= self.image.get_rect() # definindo a imagem como um retângulo 
+        self.rect.centerx = choice([-100, WIDTH + 100]) #para a abelha subir e descer enquanto voa
+        self.vx= randrange(1, 4) # velocidade da abelha voando somente no eixo x
+        if self.rect.centerx > WIDTH: # quando a abelha sair da tela, sua velocidade será negativa, fazendo com que ela suma
             self.vx *= -1
-        self.rect.y= randrange(HEIGHT / 2)
-        self.vy= 0
-        self.dy= 0.5
+        self.rect.y= randrange(HEIGHT / 2) # abelha só aparece na altura do meio da janela 
+        self.vy= 0 # velocidade nula, já que ela não vai voar nessa direção 
+        self.dy= 0.5 
 
     def update(self):
         self.rect.x += self.vx

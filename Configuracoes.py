@@ -28,7 +28,7 @@ l_plataformas= [(0, HEIGHT-60), (175, 100),
 
 #Propriedades do jogo
 boost_poder= 60
-spawn_pct_po= 7 #tempo p/ responder
+poder_na_plat= 7 #tempo p/ responder
 frequencia_inimigo= 5000 #ms = 5 segundos 
 
 #Camada em que cada componente está 
