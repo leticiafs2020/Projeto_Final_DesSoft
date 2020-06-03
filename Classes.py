@@ -24,8 +24,8 @@ class Player(pygame.sprite.Sprite):
         self.game= game
         self.andando= False
         self.pulando= False 
-        self.current_frame= 0 
-        self.last_update= 0 
+        self.frame_atual= 0 
+        self.ultimo_update= 0 
         self.carregando_imagens()
         self.image= self.standing_frame[0] # imagem do jogador parado 
         self.rect= self.image.get_rect()
@@ -97,23 +97,23 @@ class Player(pygame.sprite.Sprite):
             self.andando= False
         #animação para andar 
         if self.andando:
-            if agora - self.last_update > 200: #vai depender de quanto o et estiver rápido
-                self.last_update = agora
-                self.current_frame= (self.current_frame + 1) % len(self.walk_frames_l)
+            if agora - self.ultimo_update > 200: #vai depender de quanto o et estiver rápido
+                self.ultimo_update = agora
+                self.frame_atual= (self.frame_atual + 1) % len(self.walk_frames_l)
                 bottom= self.rect.bottom
                 if self.vel.x > 0: #ver qual a direção que está andando
-                    self.image= self.walk_frames_r[self.current_frame] 
+                    self.image= self.walk_frames_r[self.frame_atual] 
                 else:
-                    self.image= self.walk_frames_l[self.current_frame]
+                    self.image= self.walk_frames_l[self.frame_atual]
                 self.rect= self.image.get_rect()
                 self.rect.bottom= bottom
         #mostrar animação
         if not self.pulando and not self.andando:
-            if agora - self.last_update > 350: #350 milisegundos
-                self.last_update = agora
-                self.current_frame= (self.current_frame + 1) % len(self.standing_frame)
+            if agora - self.ultimo_update > 350: #350 milisegundos
+                self.ultimo_update = agora
+                self.frame_atual= (self.frame_atual + 1) % len(self.standing_frame)
                 bottom= self.rect.bottom
-                self.image= self.standing_frame[self.current_frame]
+                self.image= self.standing_frame[self.frame_atual]
                 self.rect= self.image.get_rect()
                 self.rect.bottom= bottom 
 
