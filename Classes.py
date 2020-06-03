@@ -26,7 +26,7 @@ class Player(pygame.sprite.Sprite):
         self.pulando= False 
         self.current_frame= 0 
         self.last_update= 0 
-        self.load_images()
+        self.carregando_imagens()
         self.image= self.standing_frame[0] # imagem do jogador parado 
         self.rect= self.image.get_rect()
         self.rect.center= (40, HEIGHT - 100) #p/ ele começar no canto inferior esquerdo da tela
@@ -34,7 +34,7 @@ class Player(pygame.sprite.Sprite):
         self.vel= vet(0, 0)  #velocidade
         self.acc= vet(0, 0)  #aceleração
 
-    def load_images(self):
+    def carregando_imagens(self):
         self.standing_frame= [self.game.spritesheet.get_image(260, 1032, 128, 256), self.game.spritesheet.get_image(260, 774, 128, 256)]
         for frame in self.standing_frame:
             frame.set_colorkey(preto) 
