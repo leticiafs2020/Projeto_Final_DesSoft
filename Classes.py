@@ -22,32 +22,36 @@ class Player(pygame.sprite.Sprite):
         self.groups= game.all_sprites # adicionando na função o grupo de sprites
         pygame.sprite.Sprite.__init__(self, self.groups)
         self.game= game
-        self.andando= False
-        self.pulando= False 
-        self.frame_atual= 0 
+        self.andando= False    #sem movimento
+        self.pulando= False    #sem movimento
+        self.frame_atual= 0    
         self.ultimo_update= 0 
-        self.carregando_imagens()
-        self.image= self.standing_frame[0] # imagem do jogador parado 
-        self.rect= self.image.get_rect()
+        self.carregando_imagens()  #adicionando a função carregando_imagens
+        self.image= self.jogador_parado[0] # imagem do jogador parado 
+        self.rect= self.image.get_rect()   # configurando as dimensões da imagem como retângulo
         self.rect.center= (40, HEIGHT - 100) #p/ ele começar no canto inferior esquerdo da tela
         self.pos= vet(40, HEIGHT - 100) #posição
         self.vel= vet(0, 0)  #velocidade
         self.acc= vet(0, 0)  #aceleração
 
     def carregando_imagens(self):
-        self.standing_frame= [self.game.spritesheet.get_image(260, 1032, 128, 256), self.game.spritesheet.get_image(260, 774, 128, 256)]
-        for frame in self.standing_frame:
-            frame.set_colorkey(preto) 
-        self.walk_frames_r= [self.game.spritesheet.get_image(130, 1290, 128, 256),
+        #Dando as cordenadas das imagens do jogador parado
+        self.jogador_parado= [self.game.spritesheet.get_image(260, 1032, 128, 256), self.game.spritesheet.get_image(260, 774, 128, 256)] 
+        for frame in self.jogador_parado:
+            frame.set_colorkey(preto)   #Definindo o fundo da imagem preto
+        #Dando as cordenadas das imagens do jogador andando
+        self.jogador_andando_d= [self.game.spritesheet.get_image(130, 1290, 128, 256),
                             self.game.spritesheet.get_image(130, 1032, 128, 256) ]
-        self.walk_frames_l= []
-        for frame in self.walk_frames_r: #rotacionando as imagens para a esquerda
-            frame.set_colorkey(preto) 
-            self.walk_frames_l.append(pygame.transform.flip(frame, True, False)) #rotaciona horizontalmente, não verticalmente
-        self.jump_frame= self.game.spritesheet.get_image(260, 516, 128, 256)
-        self.jump_frame.set_colorkey(preto)
+        self.jogador_andando_e= []
+        for frame in self.jogador_andando_d: #rotacionando as imagens para a esquerda
+            frame.set_colorkey(preto)   #Definindo o fundo da imagem preto
+            self.jogador_andando_e.append(pygame.transform.flip(frame, True, False)) #rotaciona horizontalmente, não verticalmente
+        #Dando as cordenadas da imagem do jogador pulando
+        self.jogador_pulando= self.game.spritesheet.get_image(260, 516, 128, 256)
+        self.jogador_pulando.set_colorkey(preto)  #Definindo o fundo da imagem preto
         
     def pular_cut(self):
+        #Arrumando o pulo
         if self.pulando:
             if self.vel.y < -3:
                 self.vel.y = -3
@@ -55,18 +59,20 @@ class Player(pygame.sprite.Sprite):
     def pular(self):
         #só pula se tiver em alguma plataforma
         self.rect.x += 2
-        colisao= pygame.sprite.spritecollide(self, self.game.platforms, False)
+        colisao= pygame.sprite.spritecollide(self, self.game.platforms, False)  #declarando colisão
         self.rect.x -= 2 #não é visível isso, mas necessário
+        # Se houver colisão e o E.T não estiver pulando
         if colisao and not self.pulando:
             self.game.jump_sound.play() #só faz esse som quando ele pula p/ outra plataforma
             self.pulando= True
             self.vel.y = -pulo
     
     def update(self):
-        self.animate()
-        self.acc= vet(0, jogador_gravidade)
+        self.animate()  # Chamando a função animate para a função update
+        self.acc= vet(0, jogador_gravidade)  #A aceleração será igual a gravidade voltada para baixo
         keys= pygame.key.get_pressed()
-        if keys[pygame.K_LEFT]:
+        #Mudando a direção do jogador
+        if keys[pygame.K_LEFT]:   
             self.acc.x= -jogador_aceleracao
         if keys[pygame.K_RIGHT]:
             self.acc.x= jogador_aceleracao
@@ -89,33 +95,33 @@ class Player(pygame.sprite.Sprite):
  
         self.rect.midbottom = self.pos
 
-    def animate(self):
+    def animate(self):   #Função da animação do jogador
         agora= pygame.time.get_ticks()
-        if self.vel.x != 0:
+        if self.vel.x != 0:  #se a velocidade no eixo x for diferente de 0, o jogador anda
             self.andando= True
-        else:
+        else:  #se não tiver velocidade no eixo x, o jogador não anda
             self.andando= False
         #animação para andar 
         if self.andando:
             if agora - self.ultimo_update > 200: #vai depender de quanto o et estiver rápido
-                self.ultimo_update = agora
-                self.frame_atual= (self.frame_atual + 1) % len(self.walk_frames_l)
-                bottom= self.rect.bottom
+                self.ultimo_update = agora       #o ultimo_update se torna o agora a partir do momento em que ele anda
+                self.frame_atual= (self.frame_atual + 1) % len(self.jogador_andando_e)  #a posição onde o jogador ficará
+                parte_inferior= self.rect.bottom
                 if self.vel.x > 0: #ver qual a direção que está andando
-                    self.image= self.walk_frames_r[self.frame_atual] 
+                    self.image= self.jogador_andando_d[self.frame_atual] #imagem do E.T quando andando para direita
                 else:
-                    self.image= self.walk_frames_l[self.frame_atual]
+                    self.image= self.jogador_andando_e[self.frame_atual] #imagem do E.T quando andando para esquerda
                 self.rect= self.image.get_rect()
-                self.rect.bottom= bottom
+                self.rect.bottom= parte_inferior
         #mostrar animação
-        if not self.pulando and not self.andando:
+        if not self.pulando and not self.andando:   #se o jogador não estiver pulando nem andando
             if agora - self.ultimo_update > 350: #350 milisegundos
-                self.ultimo_update = agora
-                self.frame_atual= (self.frame_atual + 1) % len(self.standing_frame)
-                bottom= self.rect.bottom
-                self.image= self.standing_frame[self.frame_atual]
+                self.ultimo_update = agora  #o ultimo_update se torna o agora a partir do momento em que ele fica parado
+                self.frame_atual= (self.frame_atual + 1) % len(self.jogador_parado)  #a posição onde o jogador ficará
+                parte_inferior = self.rect.bottom
+                self.image= self.jogador_parado[self.frame_atual]   #imagem do E.T quando parado
                 self.rect= self.image.get_rect()
-                self.rect.bottom= bottom 
+                self.rect.bottom= parte_inferior 
 
 class Plataforma(pygame.sprite.Sprite):
     def __init__(self, game, x, y): # coordenadas
