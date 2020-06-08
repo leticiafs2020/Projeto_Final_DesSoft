@@ -198,11 +198,11 @@ class Inimigo(pygame.sprite.Sprite):
         self.dy= 0.5 #Variação de espaço entre um inimigo e outro 
 
     def update(self):
-        self.rect.x += self.vx 
-        self.vy += self.dy  
-        if self.vy > 3 or self.vy < -3:
+        self.rect.x += self.vx #Atualizando a velocidade 
+        self.vy += self.dy  #Atualizando a variação 
+        if self.vy > 3 or self.vy < -3: #Se a velocidade em y for maior que 3 ou menor que -3, ele fica em looping
             self.dy *= -1
-        centro= self.rect.center
+        centro= self.rect.center  #Definindo o centro do inimigo
         if self.dy < 0:
             self.image= self.image_up #Se o inimigo subir no eixo Y, é aplicada a imagem dele subindo
         else:
