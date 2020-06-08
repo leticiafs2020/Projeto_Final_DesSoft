@@ -118,10 +118,15 @@ class Game:
         # colisão do contorno da abelha com o contorno do et
         inimigo_colisao= pygame.sprite.spritecollide(self.player, self.inimigos, False, pygame.sprite.collide_mask)
         if inimigo_colisao:
-            self.playing= False
+            print('colisao')
+            self.player.vida -= 1 
+            for i in inimigo_colisao:
+                i.kill()
+            if self.player.vida <= 0:
+                self.playing= False
         #Checa se o jogador bateu na plataforma, só se estiver caindo:
         if self.player.vel.y > 0:
-            colisao= pygame.sprite.spritecollide(self.player, self.platforms, False)
+            colisao = pygame.sprite.spritecollide(self.player, self.platforms, False)
             if colisao:
                 menor= colisao[0]
                 #Quando há colisões entre o pé do E.T e a plataforma, o E.T ficará em cima da plataforma
