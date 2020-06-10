@@ -15,6 +15,7 @@ class Game:
         self.font_name= pygame.font.match_font(nome_fonte)
         self.load_data()
         agora2= 0
+        self.vida = 3
 
     def load_data(self):
         #Importando imagens e sons para o jogo
@@ -95,6 +96,21 @@ class Game:
         text_rect= text_surface.get_rect()
         text_rect.midtop= (x, y)
         self.screen.blit(text_surface, text_rect)
+        if self.vida == 3:
+            text_surface2 = font.render(chr(9829) * 3, True, (255, 0, 0))
+            text_rect2 = text_surface2.get_rect()
+            text_rect2.bottomleft = (10, 20)
+            self.screen.blit(text_surface2, text_rect2)
+        if self.vida == 2:
+            text_surface2 = font.render(chr(9829) * 2, True, (255, 0, 0))
+            text_rect2 = text_surface2.get_rect()
+            text_rect2.bottomleft = (10, 20)
+            self.screen.blit(text_surface2, text_rect2)
+        if self.vida == 1:
+            text_surface2 = font.render(chr(9829) * 1, True, (255, 0, 0))
+            text_rect2 = text_surface2.get_rect()
+            text_rect2.bottomleft = (10, 20)
+            self.screen.blit(text_surface2, text_rect2)
 
     def run(self):
         #Loop do jogo:
@@ -120,10 +136,10 @@ class Game:
         # colisão do contorno da abelha com o contorno do et
         inimigo_colisao= pygame.sprite.spritecollide(self.player, self.inimigos, False, pygame.sprite.collide_mask)
         if inimigo_colisao:
-            self.player.vida -= 1 
+            self.vida -= 1 
             for i in inimigo_colisao:
                 i.kill()
-            if self.player.vida <= 0:
+            if self.vida <= 0:
                 self.playing= False
         #Checa se o jogador bateu na plataforma, só se estiver caindo:
         if self.player.vel.y > 0:

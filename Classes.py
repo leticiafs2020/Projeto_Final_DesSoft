@@ -33,7 +33,7 @@ class Player(pygame.sprite.Sprite):
         self.pos= vet(40, HEIGHT - 100) #posição
         self.vel= vet(0, 0)  #velocidade
         self.acc= vet(0, 0)  #aceleração
-        self.vida = 3
+        
 
     def carregando_imagens(self):
         #Dando as cordenadas das imagens do jogador parado
