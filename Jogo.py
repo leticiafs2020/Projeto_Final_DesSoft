@@ -14,6 +14,7 @@ class Game:
         self.running= True
         self.font_name= pygame.font.match_font(nome_fonte)
         self.load_data()
+        agora2= 0
 
     def load_data(self):
         #Importando imagens e sons para o jogo
@@ -106,12 +107,13 @@ class Game:
             self.update()
             self.draw()
         pygame.mixer.music.fadeout(500) #p/ parar a musica gradativamente após cinco segundos
-    
+ 
     def update(self):
         # atualização do loop
         self.all_sprites.update()
         #criando um inimigo
         agora= pygame.time.get_ticks()
+        agora2 = pygame.time.get_ticks() # tempo limite para ficar em contato com a plataforma
         if agora - self.inimigo_timer > frequencia_inimigo + choice([-1000, -500, 0, 500, 1000]):  #p/ ficar uma hora maior e outra menor--> variando 
             self.inimigo_timer = agora
             Inimigo(self)
@@ -138,6 +140,9 @@ class Game:
                         self.player.pos.y = menor.rect.top
                         self.player.vel.y = 0
                         self.player.pulando= False 
+                if agora2 != 0: # para a plataforma sumir apos 3 segundos em contato com o jogador 
+                    if pygame.time.get_ticks() - agora2 > 5:
+                        self.platforms.kill()
 
         #Se o jogador alcanca 1/4 do topo da tela:
         #Efeito de que o jogador está subindo e os componentes estão ficando para baixo/trás, criando novos componentes logo acima
