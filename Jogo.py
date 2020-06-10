@@ -118,7 +118,6 @@ class Game:
         # colisão do contorno da abelha com o contorno do et
         inimigo_colisao= pygame.sprite.spritecollide(self.player, self.inimigos, False, pygame.sprite.collide_mask)
         if inimigo_colisao:
-            print('colisao')
             self.player.vida -= 1 
             for i in inimigo_colisao:
                 i.kill()
