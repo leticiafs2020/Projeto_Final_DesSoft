@@ -12,3 +12,8 @@ Enredo do jogo:
     - Caso você deixe Pink encostar em seus inimigos, os Abelhões, o jogo acabará.
     - Caso você não faça Pink alcançar a plataforma e ele cair, o jogo acabará.
     - Pegando o Super Salto, Pink é lançado em elevadas. 
+
+Referências:
+  -Kids Can Code (http://kidscancode.org)
+  -Handout do professor
+  -Material disponível no curso de Design de Software
