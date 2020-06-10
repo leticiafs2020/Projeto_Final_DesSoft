@@ -43,6 +43,7 @@ class Game:
     def novo_jogo(self):
         #para começar um novo jogo
         self.score= 0      #A pontuação é começa em zero quando inicia o jogo
+        self.vida = 3
         self.all_sprites= pygame.sprite.LayeredUpdates()  #Divide as classes em camadas
         #Criando grupos de componentes do jogo
         self.platforms= pygame.sprite.Group()
