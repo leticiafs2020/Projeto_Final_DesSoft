@@ -16,6 +16,43 @@ Enredo do jogo:
     - A cada moeda que você pega durante o jogo, você ganha 50 pontos no score 
     - A cada 15 moedas que você pega durante um jogo, você ganha uma vida
 
+  Como jogar:
+    - Para iniciar o jogo, basta pressionar a barra de espaço. 
+    - Para fazer com que Pink salte, pressione a barra de espaço.
+    - Para fazer com que Pink ande, pressione as teclas com as setas para a esquerda ou para a direita.
+    - Para fazer com que Pink dê um salto maior, pressione a barra de espaço por mais tempo.
+
+  Baixando dependências:
+
+  Pygame:
+    Instalação
+      - Windows e Linux:
+          Abra o seu terminal (Linux) ou Anaconda Prompt (Windows) e digite:
+
+          pip install pygame
+
+      - Mac OSX:
+          A instalação no Mac é um pouco mais complicada, infelizmente. Se você não tiver o Homebrew instalado, instale-o seguindo as instruções disponíveis neste link (se você não sabe se tem o Homebrew instalado, provavelmente não tem): https://brew.sh/
+          Abra o terminal e digite:
+
+          brew install sdl2 sdl2_gfx sdl2_image sdl2_mixer sdl2_net sdl2_ttf
+          brew install Caskroom/cask/xquartz
+          git clone -b 1.9.6 --single-branch https://github.com/pygame/pygame.git cd pygame
+          python setup.py -config -auto -sdl2
+          python setup.py install
+          cd ..
+          rm -rf pygame
+
+          Para mais detalhes e outras opções de instalação no Mac, consulte a documentação: https://www.pygame.org/ wiki/MacCompile
+
+  Músicas:
+
+    Todos os áudios utilizados na elaboração do projeto foram retirados do site: https://opengameart.org/
+
+  Spritesheets/Imagens:
+
+    Todas as imagens utilizadas na elaboração do projeto foram retiradas do site: https://www.kenney.nl/assets/platformer-pack-redux
+
 Referências:
   -Kids Can Code (http://kidscancode.org)
   -Handout do professor
