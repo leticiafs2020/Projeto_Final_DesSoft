@@ -136,7 +136,6 @@ class Plataforma(pygame.sprite.Sprite):
         self.rect= self.image.get_rect() # definindo a imagem como um retângulo
         self.rect.x = x 
         self.rect.y = y
-        agora2= 0
         if randrange(100) < poder_na_plat: # para colocar o poder em cima da plataforma 
             Poder(self.game, self)
         if randrange(50) < moeda_na_plat: # para colocar o poder em cima da plataforma 
