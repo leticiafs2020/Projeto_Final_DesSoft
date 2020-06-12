@@ -54,9 +54,7 @@ class Game:
         self.moedas = pygame.sprite.Group()
         self.player= Player(self)
         for plat in l_plataformas:
-            Plataforma(self, *plat) #explora a lista de plataformas na classe Plataforma    #a=Plataforma(self, *plat)
-            #self.platforms.add(a)
-            #print(a)
+            Plataforma(self, *plat) #explora a lista de plataformas na classe Plataforma   
         #Intervalo e tempo entre a aparição de inimigos
         self.inimigo_timer= 0.1
         #Música durante o jogo

@@ -60,18 +60,18 @@ class Player(pygame.sprite.Sprite):
     def pular(self):
         #só pula se tiver em alguma plataforma
         self.rect.x += 2
-        colisao= pygame.sprite.spritecollide(self, self.game.platforms, False)  #declarando colisão
+        colisao = pygame.sprite.spritecollide(self, self.game.platforms, False)  #declarando colisão
         self.rect.x -= 2 #não é visível isso, mas necessário
         # Se houver colisão e o E.T não estiver pulando
         if colisao and not self.pulando:
             self.game.jump_sound.play() #só faz esse som quando ele pula p/ outra plataforma
-            self.pulando= True
+            self.pulando = True
             self.vel.y = -pulo
     
     def update(self):
         self.animate()  # Chamando a função animate para a função update
-        self.acc= vet(0, jogador_gravidade)  #A aceleração será igual a gravidade voltada para baixo
-        keys= pygame.key.get_pressed()
+        self.acc = vet(0, jogador_gravidade)  #A aceleração será igual a gravidade voltada para baixo
+        keys = pygame.key.get_pressed()
         #Mudando a direção do jogador
         if keys[pygame.K_LEFT]:   
             self.acc.x= -jogador_aceleracao
