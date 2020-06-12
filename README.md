@@ -59,6 +59,7 @@ O Projeto Final se baseia no desenvolvimento de um jogo de computador em Python 
 
   rm -rf pygame
 
+
   Para mais detalhes e outras opções de instalação no Mac, consulte a documentação: [https://www.pygame.org/wiki/MacCompile]
 
 ## Músicas:
