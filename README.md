@@ -7,7 +7,7 @@ O Projeto Final se baseia no desenvolvimento de um jogo de computador em Python 
 
 Enredo do jogo:
 
-  Com o intuito de voltar para casa, Pink o E.T salta de plataforma em plataforma enfrentando vários desafios, encontrando seus inimigos, os Abelhões, porém com seu poder de Super Salto consegue deixá-los para trás. Mas não deixe Pink encostar nos Abelhões, eles podem tirar uma de suas três vidas. Não se preocupe, caso você perca uma delas, pode consegui-la novamente pegando quinze vidas.Aventure-se com Pink nessa incrível jornada :)
+  Com o intuito de voltar para casa, Pink o E.T salta de plataforma em plataforma enfrentando vários desafios, encontrando seus inimigos, os Abelhões, porém com seu poder de Super Salto consegue deixá-los para trás. Mas não deixe Pink encostar nos Abelhões, eles podem tirar uma de suas três vidas. Não se preocupe, caso você perca uma delas, pode consegui-la novamente pegando dez moedas.Aventure-se com Pink nessa incrível jornada :)
   
   Regras do jogo:
   
@@ -16,7 +16,7 @@ Enredo do jogo:
     - Pegando o Super Salto, Pink é lançado em elevadas. 
     - Você começa o jogo com três vidas.
     - A cada moeda que você pega durante o jogo, você ganha 50 pontos no score 
-    - A cada 15 moedas que você pega durante um jogo, você ganha uma vida
+    - A cada 10 moedas que você pega durante um jogo, você ganha uma vida
 
   Como jogar:
   
