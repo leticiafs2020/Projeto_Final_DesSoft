@@ -10,7 +10,7 @@ fundo= azul_claro
 jogador_aceleracao= 0.5
 jogador_atrito= -0.12
 jogador_gravidade= 0.8
-pulo= 20
+pulo= 22
 
 #Configurações do jogo
 WIDTH= 480
