@@ -233,7 +233,7 @@ class Game:
         #Se a pontuação é maior que a máxima atingida anteriormente, será considerada a nova pontuação máxima
         if self.score > self.highscore:
             self.highscore = self.score
-            self.draw_text('Nova pontuação máxima: ', 22, azul, WIDTH/2, HEIGHT/2 + 40)
+            self.draw_text('Nova pontuação máxima!', 22, azul, WIDTH/2, HEIGHT/2 + 40)
             #Reescreve a nova pontuação no arquivo, por cima da que existia antes
             with open(path.join(self.dir, pontuacao_maxima), 'w') as f:
                 f.write(str(self.score))
