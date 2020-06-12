@@ -16,6 +16,7 @@ class Game:
         self.load_data()
         #agora2= 0
         self.vida = 3
+        self.moedinha = 0
 
     def load_data(self):
         #Importando imagens e sons para o jogo
@@ -44,6 +45,7 @@ class Game:
         #para começar um novo jogo
         self.score= 0      #A pontuação é começa em zero quando inicia o jogo
         self.vida = 3
+        self.moedinha = 0
         self.all_sprites= pygame.sprite.LayeredUpdates()  #Divide as classes em camadas
         #Criando grupos de componentes do jogo
         self.platforms= pygame.sprite.Group()
@@ -183,8 +185,11 @@ class Game:
         moeda_colisao= pygame.sprite.spritecollide(self.player, self.moedas, True)
         if moeda_colisao:
             self.score += 50
+            self.moedinha +=1
             for moeda in moeda_colisao:
                 moeda.kill()
+            if self.moedinha == 15:
+                self.vida += 1
         #Game over:
         if self.player.rect.bottom > HEIGHT: 
             for sprite in self.all_sprites:
