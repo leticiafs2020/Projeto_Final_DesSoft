@@ -139,6 +139,8 @@ class Plataforma(pygame.sprite.Sprite):
         agora2= 0
         if randrange(100) < poder_na_plat: # para colocar o poder em cima da plataforma 
             Poder(self.game, self)
+        if randrange(50) < moeda_na_plat: # para colocar o poder em cima da plataforma 
+            Moeda(self.game, self)
     
 class Poder(pygame.sprite.Sprite):
     def __init__(self, game, plat):
@@ -214,3 +216,21 @@ class Inimigo(pygame.sprite.Sprite):
         self.rect.y += self.vy
         if self.rect.left > WIDTH + 100 or self.rect.right < -100: #Se o inimgo ultrapassar a largura da janela, ele morre
             self.kill()
+
+class Moeda(pygame.sprite.Sprite):
+    def __init__(self, game, plat):
+        self._layer = layer_poder # em qual camada a moeda está
+        self.groups= game.all_sprites, game.moedas #todos os grupos que vamos usar
+        pygame.sprite.Sprite.__init__(self, self.groups)
+        self.game= game
+        self.plat= plat 
+        self.image= self.game.spritesheet.get_image(2730,0,128,128) # coordenadas de onde a imagem do poder
+        self.image.set_colorkey(preto) # preenchendo o fundo de preto 
+        self.rect= self.image.get_rect() # definindo a imagem como um retângulo
+        self.rect.centerx= self.plat.rect.centerx # para o poder ficar no centro da plataforma 
+        self.rect.bottom= self.plat.rect.top - 5 # para o poder ficar em cima/flutuando na plataforma 
+
+    def update(self):
+        self.rect.bottom= self.plat.rect.top - 5
+        if not self.game.platforms.has(self.plat): #o poder so vai existir se tiver alguma plataforma
+            self.kill() # se não tiver plataforma, o poder "morre"

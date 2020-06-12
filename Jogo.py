@@ -50,6 +50,7 @@ class Game:
         self.poderes= pygame.sprite.Group()
         self.inimigos= pygame.sprite.Group()
         self.nuvens= pygame.sprite.Group()
+        self.moedas = pygame.sprite.Group()
         self.player= Player(self)
         for plat in l_plataformas:
             Plataforma(self, *plat) #explora a lista de plataformas na classe Plataforma    #a=Plataforma(self, *plat)
@@ -177,7 +178,13 @@ class Game:
                 self.boost_sound.play()
                 self.player.vel.y = -boost_poder
                 self.player.pulando= False #Para a função pulo_cut não limitar o salto do boost
-
+        
+        #Se o jogador pega uma moeda
+        moeda_colisao= pygame.sprite.spritecollide(self.player, self.moedas, True)
+        if moeda_colisao:
+            self.score += 50
+            for moeda in moeda_colisao:
+                moeda.kill()
         #Game over:
         if self.player.rect.bottom > HEIGHT: 
             for sprite in self.all_sprites:

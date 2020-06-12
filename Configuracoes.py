@@ -30,6 +30,7 @@ l_plataformas= [(0, HEIGHT-60), (175, 100),
 boost_poder= 60
 poder_na_plat= 7 #tempo p/ responder
 frequencia_inimigo= 5000 #ms = 5 segundos 
+moeda_na_plat = 7
 
 #Camada em que cada componente está 
 layer_jogador= 2
