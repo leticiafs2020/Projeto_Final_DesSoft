@@ -150,7 +150,7 @@ class Poder(pygame.sprite.Sprite):
         self.game= game
         self.plat= plat
         self.type= choice(['boost']) # função do pygame 
-        self.image= self.game.spritesheet.get_image(2470, 1170, 128, 128) # coordenadas de onde a imagem do poder
+        self.image= self.game.spritesheet.get_image(2080, 1040, 128, 128) # coordenadas de onde a imagem do poder
         self.image.set_colorkey(preto) # preenchendo o fundo de preto 
         self.rect= self.image.get_rect() # definindo a imagem como um retângulo
         self.rect.centerx= self.plat.rect.centerx # para o poder ficar no centro da plataforma 
