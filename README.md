@@ -4,6 +4,8 @@
 
 **Título:** "E.T de volta para casa"
 
+**Link do vídeo da demonstração do jogo postada no Youtube:** [https://youtu.be/G7TSI5cWqWI]
+
 O Projeto Final se baseia no desenvolvimento de um jogo de computador em Python 3 utilizando os recursos da biblioteca PyGame. Nosso projeto consiste em um jogo singleplayer em que o player salta entre as plataformas tentando não ser atingido pelos inimigos nem cair. 
 
 ## Enredo do jogo:
