@@ -8,7 +8,7 @@
 
 Para rodar o jogo, inicie o arquivo "Iniciando.py"
 
-**//////////////////////////////////////////////////////////**
+**////////////////////////////////////////////////////////////**
 
 
 **Link do vídeo da demonstração do jogo postada no Youtube:** [https://youtu.be/G7TSI5cWqWI]
