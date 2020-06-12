@@ -45,13 +45,13 @@ O Projeto Final se baseia no desenvolvimento de um jogo de computador em Python 
    
   Abra o terminal e digite:
 
-  brew install sdl2 sdl2_gfx sdl2_image sdl2_mixer sdl2_net sdl2_ttf
-  brew install Caskroom/cask/xquartz
-  git clone -b 1.9.6 --single-branch https://github.com/pygame/pygame.git cd pygame
-  python setup.py -config -auto -sdl2
-  python setup.py install
-  cd ..
-  rm -rf pygame
+   brew install sdl2 sdl2_gfx sdl2_image sdl2_mixer sdl2_net sdl2_ttf
+   brew install Caskroom/cask/xquartz
+   git clone -b 1.9.6 --single-branch https://github.com/pygame/pygame.git cd pygame
+   python setup.py -config -auto -sdl2
+   python setup.py install
+   cd ..
+   rm -rf pygame
 
   Para mais detalhes e outras opções de instalação no Mac, consulte a documentação: [https://www.pygame.org/ wiki/MacCompile]
 
