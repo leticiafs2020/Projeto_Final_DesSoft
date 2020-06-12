@@ -68,7 +68,7 @@ class Game:
 
     def tela_inicio(self):  
         # tela inicial do jogo
-        pygame.mixer.music.load(path.join(self.som_dir, 'durante o jogo.wav'))
+        pygame.mixer.music.load(path.join(self.som_dir, 'tela_inicio.wav'))
         #Pôr a música para tocar mais de uma vez
         pygame.mixer.music.play(loops= -1)
         #Aplica a cor de fundo da tela inicial
