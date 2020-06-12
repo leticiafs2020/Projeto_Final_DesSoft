@@ -56,11 +56,11 @@ Enredo do jogo:
 
     Todas as imagens utilizadas na elaboração do projeto foram retiradas do site: https://www.kenney.nl/assets/platformer-pack-redux
 
-Referências:
+ Referências:
 
-  -Kids Can Code (http://kidscancode.org)
-  -Handout do professor
-  -Material disponível no curso de Design de Software
-  -Kenny (https://www.kenney.nl/)
-  -Open Game Art (https://opengameart.org/)
-  -Pygame (https://www.pygame.org/)
+  - Kids Can Code (http://kidscancode.org).
+  - Handout do professor.
+  - Material disponível no curso de Design de Software.
+  - Kenny (https://www.kenney.nl/).
+  - Open Game Art (https://opengameart.org/).
+  - Pygame (https://www.pygame.org/).
