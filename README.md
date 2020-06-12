@@ -41,19 +41,25 @@ O Projeto Final se baseia no desenvolvimento de um jogo de computador em Python 
 
 ##### Mac OSX:
   
-  A instalação no Mac é um pouco mais complicada, infelizmente. Se você não tiver o Homebrew instalado, instale-o seguindo as instruções disponíveis neste link (se você não sabe se tem o Homebrew instalado, provavelmente não tem): https://brew.sh/
+  A instalação no Mac é um pouco mais complicada, infelizmente. Se você não tiver o Homebrew instalado, instale-o seguindo as instruções disponíveis neste link (se você não sabe se tem o Homebrew instalado, provavelmente não tem): [https://brew.sh/]
    
   Abra o terminal e digite:
 
   brew install sdl2 sdl2_gfx sdl2_image sdl2_mixer sdl2_net sdl2_ttf
+
   brew install Caskroom/cask/xquartz
+
   git clone -b 1.9.6 --single-branch https://github.com/pygame/pygame.git cd pygame
+
   python setup.py -config -auto -sdl2
+
   python setup.py install
+
   cd ..
+
   rm -rf pygame
 
-  Para mais detalhes e outras opções de instalação no Mac, consulte a documentação: [https://www.pygame.org/ wiki/MacCompile]
+  Para mais detalhes e outras opções de instalação no Mac, consulte a documentação: [https://www.pygame.org/wiki/MacCompile]
 
 ## Músicas:
 
@@ -65,9 +71,9 @@ Todas as imagens utilizadas na elaboração do projeto foram retiradas do site: 
 
 ## Referências:
 
-- Kids Can Code (http://kidscancode.org).
+- Kids Can Code [http://kidscancode.org].
 - Handout do professor.
 - Material disponível no curso de Design de Software.
-- Kenny (https://www.kenney.nl/).
-- Open Game Art (https://opengameart.org/).
-- Pygame (https://www.pygame.org/).
+- Kenny [https://www.kenney.nl/].
+- Open Game Art [https://opengameart.org/].
+- Pygame [https://www.pygame.org/].
