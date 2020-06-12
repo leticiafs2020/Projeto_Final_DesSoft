@@ -183,7 +183,7 @@ class Game:
             self.moedinha +=1
             for moeda in moeda_colisao:
                 moeda.kill()
-            if self.moedinha == 15:
+            if self.moedinha % 15 == 0:
                 self.vida += 1
         #Game over:
         if self.player.rect.bottom > HEIGHT: 
